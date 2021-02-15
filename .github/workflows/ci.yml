@@ -1,0 +1,16 @@
+on: [push, pull_request]
+
+name: CI
+
+jobs:
+  build:
+    name: Build project
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: sersoft-gmbh/xcodebuild-action@v1
+        with:
+          project: pass-menubar.xcodeproj
+          scheme: pass-menubar
+          destination: platform=macOS
+          action: build
