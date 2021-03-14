@@ -6,6 +6,11 @@
 //
 
 import Cocoa
+import Preferences
+
+extension Preferences.PaneIdentifier {
+    static let general = Self("general")
+}
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -13,6 +18,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var statusItem: NSStatusItem?
     @IBOutlet weak var menu: NSMenu?
     @IBOutlet weak var firstMenuITem: NSMenuItem?
+    
+    lazy var preferencesWindowController = PreferencesWindowController(
+        preferencePanes: [
+            GeneralPreferencesViewController()
+        ],
+        style: .toolbarItems
+    )
+    
+    @IBAction func preferencesMenuItemActionHandler(_ sender: NSMenuItem) {
+        preferencesWindowController.show()
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

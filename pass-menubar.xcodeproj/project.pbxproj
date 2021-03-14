@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A5B72BB25E2A008003AA041 /* GeneralPreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5B72BA25E2A008003AA041 /* GeneralPreferenceViewController.swift */; };
 		4ADCD4C125D99EF30046EBD6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCD4C025D99EF30046EBD6 /* AppDelegate.swift */; };
 		4ADCD4C325D99EF30046EBD6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCD4C225D99EF30046EBD6 /* ViewController.swift */; };
 		4ADCD4C525D99EF30046EBD6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4ADCD4C425D99EF30046EBD6 /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A5B72BA25E2A008003AA041 /* GeneralPreferenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPreferenceViewController.swift; sourceTree = "<group>"; };
 		4ADCD4BD25D99EF30046EBD6 /* pass-menubar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pass-menubar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ADCD4C025D99EF30046EBD6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4ADCD4C225D99EF30046EBD6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				4ADCD4C025D99EF30046EBD6 /* AppDelegate.swift */,
+				4A5B72BA25E2A008003AA041 /* GeneralPreferenceViewController.swift */,
 				4ADCD4C225D99EF30046EBD6 /* ViewController.swift */,
 				4ADCD4C425D99EF30046EBD6 /* Assets.xcassets */,
 				4ADCD4C625D99EF30046EBD6 /* Main.storyboard */,
@@ -79,6 +82,9 @@
 			dependencies = (
 			);
 			name = "pass-menubar";
+			packageProductDependencies = (
+				4A5B72B725E1C306003AA041,
+			);
 			productName = "pass-menubar";
 			productReference = 4ADCD4BD25D99EF30046EBD6 /* pass-menubar.app */;
 			productType = "com.apple.product-type.application";
@@ -106,6 +112,9 @@
 				Base,
 			);
 			mainGroup = 4ADCD4B425D99EF30046EBD6;
+			packageReferences = (
+				4A5B72B625E1C306003AA041,
+			);
 			productRefGroup = 4ADCD4BE25D99EF30046EBD6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -133,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4ADCD4C325D99EF30046EBD6 /* ViewController.swift in Sources */,
+				4A5B72BB25E2A008003AA041 /* GeneralPreferenceViewController.swift in Sources */,
 				4ADCD4C125D99EF30046EBD6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -326,6 +336,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4A5B72B625E1C306003AA041 = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/Preferences";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4A5B72B725E1C306003AA041 = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A5B72B625E1C306003AA041;
+			productName = Preferences;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4ADCD4B525D99EF30046EBD6 /* Project object */;
 }
