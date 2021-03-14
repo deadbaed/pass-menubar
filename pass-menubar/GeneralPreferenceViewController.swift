@@ -21,8 +21,8 @@ let GeneralPreferencesViewController: () -> PreferencePane = {
 }
 
 struct GeneralView: View {
-    @State private var rememberPassphrase = false
-    @State private var useTouchID = false
+    @AppStorage("rememberPassphrase") private var rememberPassphrase = false
+    @AppStorage("useTouchID") private var useTouchID = false
     private let contentWidth: Double = 450.0
 
     func test() {}
