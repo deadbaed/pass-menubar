@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A08301E25FFF9B100822C03 /* Preferences in Frameworks */ = {isa = PBXBuildFile; productRef = 4A5B72B725E1C306003AA041 /* Preferences */; };
+		4A08302225FFFA0300822C03 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 4A08302125FFFA0300822C03 /* Files */; };
 		4A5B72BB25E2A008003AA041 /* GeneralPreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5B72BA25E2A008003AA041 /* GeneralPreferenceViewController.swift */; };
 		4ADCD4C125D99EF30046EBD6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCD4C025D99EF30046EBD6 /* AppDelegate.swift */; };
 		4ADCD4C325D99EF30046EBD6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCD4C225D99EF30046EBD6 /* ViewController.swift */; };
@@ -30,6 +32,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A08302225FFFA0300822C03 /* Files in Frameworks */,
+				4A08301E25FFF9B100822C03 /* Preferences in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,7 +87,8 @@
 			);
 			name = "pass-menubar";
 			packageProductDependencies = (
-				4A5B72B725E1C306003AA041,
+				4A5B72B725E1C306003AA041 /* Preferences */,
+				4A08302125FFFA0300822C03 /* Files */,
 			);
 			productName = "pass-menubar";
 			productReference = 4ADCD4BD25D99EF30046EBD6 /* pass-menubar.app */;
@@ -113,7 +118,8 @@
 			);
 			mainGroup = 4ADCD4B425D99EF30046EBD6;
 			packageReferences = (
-				4A5B72B625E1C306003AA041,
+				4A5B72B625E1C306003AA041 /* XCRemoteSwiftPackageReference "Preferences" */,
+				4A08302025FFFA0300822C03 /* XCRemoteSwiftPackageReference "Files" */,
 			);
 			productRefGroup = 4ADCD4BE25D99EF30046EBD6 /* Products */;
 			projectDirPath = "";
@@ -338,7 +344,15 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		4A5B72B625E1C306003AA041 = {
+		4A08302025FFFA0300822C03 /* XCRemoteSwiftPackageReference "Files" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JohnSundell/Files";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.0;
+			};
+		};
+		4A5B72B625E1C306003AA041 /* XCRemoteSwiftPackageReference "Preferences" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sindresorhus/Preferences";
 			requirement = {
@@ -349,9 +363,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		4A5B72B725E1C306003AA041 = {
+		4A08302125FFFA0300822C03 /* Files */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4A5B72B625E1C306003AA041;
+			package = 4A08302025FFFA0300822C03 /* XCRemoteSwiftPackageReference "Files" */;
+			productName = Files;
+		};
+		4A5B72B725E1C306003AA041 /* Preferences */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A5B72B625E1C306003AA041 /* XCRemoteSwiftPackageReference "Preferences" */;
 			productName = Preferences;
 		};
 /* End XCSwiftPackageProductDependency section */
