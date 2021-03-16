@@ -40,13 +40,10 @@ private class Path {
         if newPath.isEmpty {
             return
         }
-        // Handle "~" paths
-        // path = NSString(string: newPath).expandingTildeInPath
 
         // try to load as folder
         do {
             let folder = try Folder(path: newPath)
-            Folder.home
             path = folder.path
             kind = Kind.Directory
         } catch { }
@@ -57,7 +54,6 @@ private class Path {
             path = file.path
             kind = Kind.File
         } catch { }
-        print("\(kind) \(path)")
     }
 
     func isDir() -> Bool {
