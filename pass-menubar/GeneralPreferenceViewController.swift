@@ -21,48 +21,34 @@ let GeneralPreferencesViewController: () -> PreferencePane = {
     return Preferences.PaneHostingController(pane: paneView)
 }
 
-private class Path {
-    private enum Kind {
-        case Unknown
-        case File
-        case Directory
+private func loadPasswordStore(path: String, text: inout String) {
+    var folder: Folder
+    do {
+        folder = try Folder(path: path)
+    } catch {
+        text = "⛔️ Invalid path"
+        return
     }
 
-    private var path: String
-    private var kind: Kind
+    // TODO: if ./.gpg-id exists then its good
 
-    init() {
-        path = ""
-        kind = Kind.Unknown
+    text = "✅ Password store detected"
+}
+
+private func loadPrivateKey(path: String, text: inout String) {
+    var file: File
+    do {
+        file = try File(path: path)
+    } catch {
+        text = "⛔️ Invalid path"
+        return
     }
 
-    func load(newPath: String) {
-        if newPath.isEmpty {
-            return
-        }
+    // TODO: load as pgp key
+    // if key looks ok then its good
 
-        // try to load as folder
-        do {
-            let folder = try Folder(path: newPath)
-            path = folder.path
-            kind = Kind.Directory
-        } catch { }
-
-        // try to load as file
-        do {
-            let file = try File(path: newPath)
-            path = file.path
-            kind = Kind.File
-        } catch { }
-    }
-
-    func isDir() -> Bool {
-        kind == Kind.Directory ? true : false
-    }
-
-    func isFile() -> Bool {
-        kind == Kind.File ? true : false
-    }
+    // text = "⛔️ Failed to load PGP key"
+    text = "✅ Using PGP key keyidgoeshere"
 }
 
 struct GeneralView: View {
@@ -70,8 +56,8 @@ struct GeneralView: View {
     @AppStorage("useTouchID") private var useTouchID = false
     @AppStorage("rawPathPass") private var rawPathPass = ""
     @AppStorage("rawPathKey") private var rawPathKey = ""
-    private var pass = Path()
-    private var key = Path()
+    @State private var passStatus = ""
+    @State private var keyStatus = ""
     private let contentWidth: Double = 450.0
 
     var body: some View {
@@ -79,18 +65,16 @@ struct GeneralView: View {
             Preferences.Section(title: "Password store location:") {
                 HStack {
                     TextField("Enter path of directory", text: $rawPathPass)
-                    Button("Validate", action: { pass.load(newPath: rawPathPass) })
-                }.onAppear { pass.load(newPath: rawPathPass) }
-                Text("Say here if password store has been detected or not")
-                        .preferenceDescription()
+                    Button("Validate", action: { loadPasswordStore(path: rawPathPass, text: &passStatus) })
+                }.onAppear { loadPasswordStore(path: rawPathPass, text: &passStatus) }
+                Text(passStatus).preferenceDescription()
             }
             Preferences.Section(title: "PGP key location:") {
                 HStack {
                     TextField("Enter path of file", text: $rawPathKey)
-                    Button("Validate", action: { key.load(newPath: rawPathKey) })
-                }.onAppear { key.load(newPath: rawPathKey) }
-                Text("Say here if key has been found or not")
-                        .preferenceDescription()
+                    Button("Validate", action: { loadPrivateKey(path: rawPathKey, text: &keyStatus) })
+                }.onAppear { loadPrivateKey(path: rawPathKey, text: &keyStatus) }
+                Text(keyStatus).preferenceDescription()
             }
             Preferences.Section(title: "Security") {
                 Toggle("Remember key passphrase", isOn: $rememberPassphrase)
