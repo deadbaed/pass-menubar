@@ -8,6 +8,7 @@
 import SwiftUI
 import Preferences
 import Files
+import ObjectivePGP
 
 let GeneralPreferencesViewController: () -> PreferencePane = {
     let paneView = Preferences.Pane(
@@ -49,11 +50,21 @@ private func loadPrivateKey(path: String, text: inout String) {
         return
     }
 
-    // TODO: load as pgp key
-    // if key looks ok then its good
+    var keyID = ""
+    do {
+        let keys = try ObjectivePGP.readKeys(fromPath: file.path)
+        for key in keys {
+            if let priv_key = key.secretKey {
+                keyID = "\(priv_key.keyID)"
+                break
+            }
+        }
+    } catch {
+        text = "⛔️ Failed to load PGP key"
+        return
+    }
 
-    // text = "⛔️ Failed to load PGP key"
-    text = "✅ Using PGP key keyidgoeshere"
+    text = "✅ Using PGP key 0x\(keyID)"
 }
 
 struct GeneralView: View {
