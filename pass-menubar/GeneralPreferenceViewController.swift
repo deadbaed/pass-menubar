@@ -21,7 +21,7 @@ let GeneralPreferencesViewController: () -> PreferencePane = {
     return Preferences.PaneHostingController(pane: paneView)
 }
 
-private func loadPasswordStore(path: String, text: inout String) {
+private func detectPasswordStore(path: String, text: inout String) {
     var folder: Folder
     do {
         folder = try Folder(path: path)
@@ -30,7 +30,12 @@ private func loadPasswordStore(path: String, text: inout String) {
         return
     }
 
-    // TODO: if ./.gpg-id exists then its good
+    do {
+        _ = try folder.file(named: ".gpg-id")
+    } catch {
+        text = "⛔️ Invalid password store"
+        return
+    }
 
     text = "✅ Password store detected"
 }
@@ -65,8 +70,8 @@ struct GeneralView: View {
             Preferences.Section(title: "Password store location:") {
                 HStack {
                     TextField("Enter path of directory", text: $rawPathPass)
-                    Button("Validate", action: { loadPasswordStore(path: rawPathPass, text: &passStatus) })
-                }.onAppear { loadPasswordStore(path: rawPathPass, text: &passStatus) }
+                    Button("Validate", action: { detectPasswordStore(path: rawPathPass, text: &passStatus) })
+                }.onAppear { detectPasswordStore(path: rawPathPass, text: &passStatus) }
                 Text(passStatus).preferenceDescription()
             }
             Preferences.Section(title: "PGP key location:") {
