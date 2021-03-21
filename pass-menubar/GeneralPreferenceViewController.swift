@@ -69,7 +69,6 @@ private func loadPrivateKey(path: String, text: inout String) {
 
 struct GeneralView: View {
     @AppStorage("rememberPassphrase") private var rememberPassphrase = false
-    @AppStorage("useTouchID") private var useTouchID = false
     @AppStorage("rawPathPass") private var rawPathPass = ""
     @AppStorage("rawPathKey") private var rawPathKey = ""
     @State private var passStatus = ""
@@ -94,7 +93,6 @@ struct GeneralView: View {
             }
             Preferences.Section(title: "Security") {
                 Toggle("Remember key passphrase", isOn: $rememberPassphrase)
-                Toggle("Use Touch ID", isOn: $useTouchID).disabled(rememberPassphrase == false)
             }
         }
     }
