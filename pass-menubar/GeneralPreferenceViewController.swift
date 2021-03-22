@@ -23,6 +23,11 @@ let GeneralPreferencesViewController: () -> PreferencePane = {
 }
 
 private func detectPasswordStore(path: String, text: inout String) {
+    if path.isEmpty {
+        text = ""
+        return
+    }
+
     var folder: Folder
     do {
         folder = try Folder(path: path)
@@ -42,6 +47,11 @@ private func detectPasswordStore(path: String, text: inout String) {
 }
 
 private func loadPrivateKey(path: String, text: inout String) {
+    if path.isEmpty {
+        text = ""
+        return
+    }
+
     var file: File
     do {
         file = try File(path: path)
