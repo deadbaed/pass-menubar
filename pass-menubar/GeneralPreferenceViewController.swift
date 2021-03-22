@@ -78,17 +78,15 @@ struct GeneralView: View {
     var body: some View {
         Preferences.Container(contentWidth: contentWidth) {
             Preferences.Section(title: "Password store location:") {
-                HStack {
-                    TextField("Enter path of directory", text: $rawPathPass)
-                    Button("Validate", action: { detectPasswordStore(path: rawPathPass, text: &passStatus) })
-                }.onAppear { detectPasswordStore(path: rawPathPass, text: &passStatus) }
+                TextField("Enter path of directory", text: $rawPathPass, onCommit: {
+                    detectPasswordStore(path: rawPathPass, text: &passStatus)
+                }).onAppear { detectPasswordStore(path: rawPathPass, text: &passStatus) }
                 Text(passStatus).preferenceDescription()
             }
             Preferences.Section(title: "PGP key location:") {
-                HStack {
-                    TextField("Enter path of file", text: $rawPathKey)
-                    Button("Validate", action: { loadPrivateKey(path: rawPathKey, text: &keyStatus) })
-                }.onAppear { loadPrivateKey(path: rawPathKey, text: &keyStatus) }
+                TextField("Enter path of file", text: $rawPathKey, onCommit: {
+                    loadPrivateKey(path: rawPathKey, text: &keyStatus)
+                }).onAppear { loadPrivateKey(path: rawPathKey, text: &keyStatus) }
                 Text(keyStatus).preferenceDescription()
             }
             Preferences.Section(title: "Security") {
