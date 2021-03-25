@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,7 @@
 		4AACCFE0260CBE0A00A5F353 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AACCFDF260CBE0A00A5F353 /* Preview Assets.xcassets */; };
 		4AACCFEB260CC01600A5F353 /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AACCFEA260CC01600A5F353 /* StatusBarController.swift */; };
 		4AACCFEE260CC1C100A5F353 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AACCFED260CC1C100A5F353 /* Settings.swift */; };
+		4AACCFF2260CC6DA00A5F353 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 4AACCFF1260CC6DA00A5F353 /* Files */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AACCFF2260CC6DA00A5F353 /* Files in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +95,9 @@
 			dependencies = (
 			);
 			name = "pass-menubar";
+			packageProductDependencies = (
+				4AACCFF1260CC6DA00A5F353 /* Files */,
+			);
 			productName = "pass-menubar";
 			productReference = 4AACCFD5260CBE0900A5F353 /* pass-menubar.app */;
 			productType = "com.apple.product-type.application";
@@ -120,6 +125,9 @@
 				Base,
 			);
 			mainGroup = 4AACCFCC260CBE0900A5F353;
+			packageReferences = (
+				4AACCFF0260CC6DA00A5F353 /* XCRemoteSwiftPackageReference "Files" */,
+			);
 			productRefGroup = 4AACCFD6260CBE0900A5F353 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -337,6 +345,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4AACCFF0260CC6DA00A5F353 /* XCRemoteSwiftPackageReference "Files" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JohnSundell/Files";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4AACCFF1260CC6DA00A5F353 /* Files */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4AACCFF0260CC6DA00A5F353 /* XCRemoteSwiftPackageReference "Files" */;
+			productName = Files;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4AACCFCD260CBE0900A5F353 /* Project object */;
 }
