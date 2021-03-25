@@ -15,6 +15,7 @@
 		4AACCFEE260CC1C100A5F353 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AACCFED260CC1C100A5F353 /* Settings.swift */; };
 		4AACCFF2260CC6DA00A5F353 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 4AACCFF1260CC6DA00A5F353 /* Files */; };
 		4AACCFF6260CC70900A5F353 /* ObjectivePGP in Frameworks */ = {isa = PBXBuildFile; productRef = 4AACCFF5260CC70900A5F353 /* ObjectivePGP */; };
+		4AACCFFA260CC78D00A5F353 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 4AACCFF9260CC78D00A5F353 /* KeychainAccess */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 			files = (
 				4AACCFF6260CC70900A5F353 /* ObjectivePGP in Frameworks */,
 				4AACCFF2260CC6DA00A5F353 /* Files in Frameworks */,
+				4AACCFFA260CC78D00A5F353 /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +102,7 @@
 			packageProductDependencies = (
 				4AACCFF1260CC6DA00A5F353 /* Files */,
 				4AACCFF5260CC70900A5F353 /* ObjectivePGP */,
+				4AACCFF9260CC78D00A5F353 /* KeychainAccess */,
 			);
 			productName = "pass-menubar";
 			productReference = 4AACCFD5260CBE0900A5F353 /* pass-menubar.app */;
@@ -131,6 +134,7 @@
 			packageReferences = (
 				4AACCFF0260CC6DA00A5F353 /* XCRemoteSwiftPackageReference "Files" */,
 				4AACCFF4260CC70900A5F353 /* XCRemoteSwiftPackageReference "ObjectivePGP" */,
+				4AACCFF8260CC78D00A5F353 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 			);
 			productRefGroup = 4AACCFD6260CBE0900A5F353 /* Products */;
 			projectDirPath = "";
@@ -367,6 +371,14 @@
 				minimumVersion = 0.17.0;
 			};
 		};
+		4AACCFF8260CC78D00A5F353 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -379,6 +391,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4AACCFF4260CC70900A5F353 /* XCRemoteSwiftPackageReference "ObjectivePGP" */;
 			productName = ObjectivePGP;
+		};
+		4AACCFF9260CC78D00A5F353 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4AACCFF8260CC78D00A5F353 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
