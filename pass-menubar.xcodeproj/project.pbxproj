@@ -11,6 +11,8 @@
 		4AACCFDB260CBE0900A5F353 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AACCFDA260CBE0900A5F353 /* ContentView.swift */; };
 		4AACCFDD260CBE0A00A5F353 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AACCFDC260CBE0A00A5F353 /* Assets.xcassets */; };
 		4AACCFE0260CBE0A00A5F353 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AACCFDF260CBE0A00A5F353 /* Preview Assets.xcassets */; };
+		4AACCFEB260CC01600A5F353 /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AACCFEA260CC01600A5F353 /* StatusBarController.swift */; };
+		4AACCFEE260CC1C100A5F353 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AACCFED260CC1C100A5F353 /* Settings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +23,8 @@
 		4AACCFDF260CBE0A00A5F353 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4AACCFE1260CBE0A00A5F353 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4AACCFE2260CBE0A00A5F353 /* pass_menubar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = pass_menubar.entitlements; sourceTree = "<group>"; };
+		4AACCFEA260CC01600A5F353 /* StatusBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
+		4AACCFED260CC1C100A5F353 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +57,8 @@
 		4AACCFD7260CBE0900A5F353 /* pass-menubar */ = {
 			isa = PBXGroup;
 			children = (
+				4AACCFED260CC1C100A5F353 /* Settings.swift */,
+				4AACCFEA260CC01600A5F353 /* StatusBarController.swift */,
 				4AACCFD8260CBE0900A5F353 /* pass_menubarApp.swift */,
 				4AACCFDA260CBE0900A5F353 /* ContentView.swift */,
 				4AACCFDC260CBE0A00A5F353 /* Assets.xcassets */,
@@ -141,6 +147,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4AACCFDB260CBE0900A5F353 /* ContentView.swift in Sources */,
+				4AACCFEB260CC01600A5F353 /* StatusBarController.swift in Sources */,
+				4AACCFEE260CC1C100A5F353 /* Settings.swift in Sources */,
 				4AACCFD9260CBE0900A5F353 /* pass_menubarApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
