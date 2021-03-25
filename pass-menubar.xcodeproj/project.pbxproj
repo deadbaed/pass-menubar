@@ -14,6 +14,7 @@
 		4AACCFEB260CC01600A5F353 /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AACCFEA260CC01600A5F353 /* StatusBarController.swift */; };
 		4AACCFEE260CC1C100A5F353 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AACCFED260CC1C100A5F353 /* Settings.swift */; };
 		4AACCFF2260CC6DA00A5F353 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 4AACCFF1260CC6DA00A5F353 /* Files */; };
+		4AACCFF6260CC70900A5F353 /* ObjectivePGP in Frameworks */ = {isa = PBXBuildFile; productRef = 4AACCFF5260CC70900A5F353 /* ObjectivePGP */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AACCFF6260CC70900A5F353 /* ObjectivePGP in Frameworks */,
 				4AACCFF2260CC6DA00A5F353 /* Files in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -97,6 +99,7 @@
 			name = "pass-menubar";
 			packageProductDependencies = (
 				4AACCFF1260CC6DA00A5F353 /* Files */,
+				4AACCFF5260CC70900A5F353 /* ObjectivePGP */,
 			);
 			productName = "pass-menubar";
 			productReference = 4AACCFD5260CBE0900A5F353 /* pass-menubar.app */;
@@ -127,6 +130,7 @@
 			mainGroup = 4AACCFCC260CBE0900A5F353;
 			packageReferences = (
 				4AACCFF0260CC6DA00A5F353 /* XCRemoteSwiftPackageReference "Files" */,
+				4AACCFF4260CC70900A5F353 /* XCRemoteSwiftPackageReference "ObjectivePGP" */,
 			);
 			productRefGroup = 4AACCFD6260CBE0900A5F353 /* Products */;
 			projectDirPath = "";
@@ -355,6 +359,14 @@
 				minimumVersion = 4.2.0;
 			};
 		};
+		4AACCFF4260CC70900A5F353 /* XCRemoteSwiftPackageReference "ObjectivePGP" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/krzyzanowskim/ObjectivePGP";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.17.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -362,6 +374,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4AACCFF0260CC6DA00A5F353 /* XCRemoteSwiftPackageReference "Files" */;
 			productName = Files;
+		};
+		4AACCFF5260CC70900A5F353 /* ObjectivePGP */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4AACCFF4260CC70900A5F353 /* XCRemoteSwiftPackageReference "ObjectivePGP" */;
+			productName = ObjectivePGP;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
