@@ -9,19 +9,37 @@ import SwiftUI
 
 struct ContentView: View {
     @Binding var text: String
+    @AppStorage("rawPathPass") private var rawPathPass = ""
     
     var body: some View {
-        VStack(alignment: .center) {
-            Text("Hello, World!")
+        VStack {
+            HStack {
+                Text(rawPathPass)
+                Spacer()
+                // settings
+                Button(action: { NSApp.sendAction(Selector(("showPreferencesWindow:")), to: nil, from: nil) },
+                       label: {
+                        Image(systemName: "gearshape.fill")
+                       })
+
+                // quit
+                Button(action: {
+                    NSApp.terminate(self)
+                }, label: {
+                    Image(systemName: "power")
+                })
+            }.padding(5)
+
             TextField("Search password ...", text: $text)
-            Button("open preferences") {
-                NSApp.sendAction(Selector(("showPreferencesWindow:")), to: nil, from: nil)
-            }
-            Button("quit app") {
-                NSApp.terminate(self)
+            ScrollView {
+                VStack {
+                    ForEach(0..<100) {
+                        Text("Row \($0)")
+                    }
+                }.frame(maxWidth: .infinity)
             }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+//        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 
