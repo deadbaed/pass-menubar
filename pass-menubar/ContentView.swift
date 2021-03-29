@@ -7,10 +7,18 @@
 
 import SwiftUI
 
+func get_list_passwords() -> [String] {
+    ["phil", "papie", "laurene", "dim", "taz", "ana", "theo", "pierre", "wag",
+    "aurelien", "garance", "quentin", "mottin", "vico", "peter", "kylian", "nathan",
+    "ghassane", "charles", "pauline", "julia", "stephane", "laurence", "bruno"]
+}
+
 struct ContentView: View {
     @Binding var text: String
     @AppStorage("rawPathPass") private var rawPathPass = ""
     
+    let list_files = get_list_passwords()
+
     var body: some View {
         VStack {
             HStack {
@@ -32,11 +40,11 @@ struct ContentView: View {
 
             TextField("Search password ...", text: $text)
             ScrollView {
-                VStack {
-                    ForEach(0..<100) {
-                        Text("Row \($0)")
+                VStack(alignment: .leading) {
+                    ForEach(0 ..< list_files.count) { value in
+                        Text(list_files[value])
                     }
-                }.frame(maxWidth: .infinity)
+                }.frame(maxWidth: .infinity, alignment: .topLeading)
             }
         }
 //        .frame(maxWidth: .infinity, maxHeight: .infinity)
