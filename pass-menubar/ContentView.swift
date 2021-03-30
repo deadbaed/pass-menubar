@@ -14,7 +14,7 @@ func get_list_passwords() -> [String] {
 }
 
 struct ContentView: View {
-    @Binding var text: String
+    @Binding var search: String
     @AppStorage("rawPathPass") private var rawPathPass = ""
     
     let list_files = get_list_passwords()
@@ -36,23 +36,33 @@ struct ContentView: View {
                 }, label: {
                     Image(systemName: "power")
                 })
-            }.padding(5)
+            }
 
-            TextField("Search password ...", text: $text)
+           /* HStack {
+                Image(systemName: "magnifyingglass")//.padding(.leading, 5)
+
+                TextField("", text: $searchPassword).textFieldStyle(PlainTextFieldStyle())
+                    .padding(0).font(.subheadline)
+
+                Button(action: { self.searchPassword = "" }, label: { Image(systemName: "xmark.circle.fill") }).disabled(searchPassword.isEmpty)
+                .buttonStyle(BorderlessButtonStyle())
+            }.padding(5) */
+
             ScrollView {
                 VStack(alignment: .leading) {
                     ForEach(0 ..< list_files.count) { value in
-                        Text(list_files[value])
+                        Text(list_files[value]).padding(EdgeInsets(top: 1, leading: 0, bottom: 1, trailing: 0))
+                        /* Button(action: { print(list_files[value])}, label: { Text(list_files[value]).padding(1) }) */
                     }
                 }.frame(maxWidth: .infinity, alignment: .topLeading)
             }
-        }
+        }.padding(5)
 //        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(text: .constant(""))
+        ContentView(search: .constant(""))
     }
 }

@@ -20,7 +20,7 @@ class pass_menubarAppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_ notification: Notification) {
         // create swiftui view
-        let contentView = ContentView(text: .constant(""))
+        let contentView = ContentView(search: .constant(""))
         
         popover.contentSize = NSSize(width: 360, height: 360)
         popover.contentViewController = NSHostingController(rootView: contentView)
