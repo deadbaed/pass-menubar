@@ -25,6 +25,16 @@ struct ContentView: View {
                 HStack {
                     Image(systemName: "magnifyingglass")
                     TextField("Search", text: $search)
+
+                    if !search.isEmpty {
+                        Button(action: {
+                            self.search = ""
+                        }) {
+                            Image(systemName: "delete.left")
+                        }
+                    } else {
+                        EmptyView()
+                    }
                 }
 
                 // settings
