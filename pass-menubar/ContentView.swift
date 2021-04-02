@@ -6,17 +6,35 @@
 //
 
 import SwiftUI
+import Files
 
-func get_list_passwords() -> [String] {
-    ["phil", "papie", "laurene", "dim", "taz", "ana", "theo", "pierre", "wag",
-    "aurelien", "garance", "quentin", "mottin", "vico", "peter", "kylian", "nathan",
-    "ghassane", "charles", "pauline", "julia", "stephane", "laurence", "bruno"]
+func get_list_passwords(path: String) -> [String] {
+    var array: [String] = []
+
+    var folder: Folder
+    do {
+        folder = try Folder(path: path)
+        folder.files.recursive.forEach { file in
+            // TODO: check if ends with .gpg and remove from path
+
+            // FIXME: remove !
+            let x = file.parent!.name + "/" + file.name
+            print(file)
+            array.append(x)
+        }
+    } catch {
+        array = ["phil", "papie", "laurene", "dim", "taz", "ana", "theo", "pierre", "wag",
+               "aurelien", "garance", "quentin", "mottin", "vico", "peter", "kylian", "nathan",
+               "ghassane", "charles", "pauline", "julia", "stephane", "laurence", "bruno"]
+    }
+    return array
 }
 
 struct ContentView: View {
     @State var search = ""
     
-    let list_files = get_list_passwords()
+    // TODO: replace by path stored (add new variable isValidPath)
+    let list_files = get_list_passwords(path: "~/.password-store")
 
     var body: some View {
         VStack {
