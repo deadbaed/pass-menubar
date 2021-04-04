@@ -11,22 +11,33 @@ import Files
 func get_list_passwords(path: String) -> [String] {
     var array: [String] = []
 
-    var folder: Folder
+    var root_passwordstore: Folder
     do {
-        folder = try Folder(path: path)
-        folder.files.recursive.forEach { file in
-            // TODO: check if ends with .gpg and remove from path
+        root_passwordstore = try Folder(path: path)
+        for file in root_passwordstore.files.recursive {
 
-            // FIXME: remove !
-            let x = file.parent!.name + "/" + file.name
-            print(file)
-            array.append(x)
+            // We are interested in files that have file extension ".gpg"
+            let file_ext = String(file.path.suffix(4))
+            if file_ext != ".gpg" {
+                continue
+            }
+
+            var displayName = file.name
+            displayName.removeLast(4) // Don't display ".gpg"
+
+            // Display subfolder names inside password store
+            // FIXME: works only for one parent folder
+            if file.parent != root_passwordstore {
+                displayName = file.parent!.name + "/" + displayName
+            }
+
+            // TODO: store everything inside struct
+            print(file.path)
+            print(displayName)
+
+            array.append(displayName)
         }
-    } catch {
-        array = ["phil", "papie", "laurene", "dim", "taz", "ana", "theo", "pierre", "wag",
-               "aurelien", "garance", "quentin", "mottin", "vico", "peter", "kylian", "nathan",
-               "ghassane", "charles", "pauline", "julia", "stephane", "laurence", "bruno"]
-    }
+    } catch {}
     return array
 }
 
