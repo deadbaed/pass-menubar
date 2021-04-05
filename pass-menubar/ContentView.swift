@@ -11,17 +11,11 @@ import Files
 func get_parent_folders(root_folder: Folder, file: File) -> String {
     var folder : Folder = file.parent!
     var string = ""
-    var vec : [String] = []
 
     // While we don't reach root folder, add each parent folder to array
     while folder != root_folder {
-        vec.append(folder.name)
+        string = folder.name + "/" + string
         folder = folder.parent!
-    }
-
-    // Iterate from last element to first to get correct order
-    for item in vec.reversed() {
-        string.append(item + "/")
     }
 
     return string
