@@ -8,6 +8,25 @@
 import SwiftUI
 import Files
 
+func get_parent_folders(root_folder: Folder, file: File) -> String {
+    var folder : Folder = file.parent!
+    var string = ""
+    var vec : [String] = []
+
+    // While we don't reach root folder, add each parent folder to array
+    while folder != root_folder {
+        vec.append(folder.name)
+        folder = folder.parent!
+    }
+
+    // Iterate from last element to first to get correct order
+    for item in vec.reversed() {
+        string.append(item + "/")
+    }
+
+    return string
+}
+
 func get_list_passwords(path: String) -> [String] {
     var array: [String] = []
 
@@ -26,10 +45,9 @@ func get_list_passwords(path: String) -> [String] {
             displayName.removeLast(4) // Don't display ".gpg"
 
             // Display subfolder names inside password store
-            // FIXME: works only for one parent folder
-            if file.parent != root_passwordstore {
-                displayName = file.parent!.name + "/" + displayName
-            }
+            let displayFolders = get_parent_folders(root_folder: root_passwordstore, file: file)
+
+            displayName = displayFolders + displayName
 
             // TODO: store everything inside struct
             print(file.path)
