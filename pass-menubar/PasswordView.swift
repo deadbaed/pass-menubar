@@ -16,6 +16,7 @@ struct PasswordView: View {
     }
 }
 
+/*
 struct PasswordView_Previews: PreviewProvider {
     static var previews: some View {
         let test: Password
@@ -23,3 +24,4 @@ struct PasswordView_Previews: PreviewProvider {
         PasswordView(password: test)
     }
 }
+*/
