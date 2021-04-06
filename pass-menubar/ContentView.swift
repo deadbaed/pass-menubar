@@ -8,21 +8,8 @@
 import SwiftUI
 import Files
 
-func get_parent_folders(root_folder: Folder, file: File) -> String {
-    var folder : Folder = file.parent!
-    var string = ""
-
-    // While we don't reach root folder, add each parent folder to array
-    while folder != root_folder {
-        string = folder.name + "/" + string
-        folder = folder.parent!
-    }
-
-    return string
-}
-
-func get_list_passwords(path: String) -> [String] {
-    var array: [String] = []
+func get_list_passwords(path: String) -> [Password] {
+    var array: [Password] = []
 
     var root_passwordstore: Folder
     do {
@@ -35,19 +22,8 @@ func get_list_passwords(path: String) -> [String] {
                 continue
             }
 
-            var displayName = file.name
-            displayName.removeLast(4) // Don't display ".gpg"
-
-            // Display subfolder names inside password store
-            let displayFolders = get_parent_folders(root_folder: root_passwordstore, file: file)
-
-            displayName = displayFolders + displayName
-
-            // TODO: store everything inside struct
-            print(file.path)
-            print(displayName)
-
-            array.append(displayName)
+            let password = Password(file: file, rootFolder: root_passwordstore)
+            array.append(password)
         }
     } catch {}
     return array
@@ -90,17 +66,12 @@ struct ContentView: View {
                 }, label: {
                     Image(systemName: "power")
                 })
-            }.padding(5)
+            }.padding(10)
 
-            ScrollView {
-                VStack(alignment: .leading) {
-                    ForEach(0 ..< list_files.count) { value in
-                        Text(list_files[value]).padding(.leading, 5)
-                        Divider()
-                    }
-                }.frame(maxWidth: .infinity, alignment: .topLeading)
+            List(list_files) { password in
+                PasswordView(password: password)
             }
-        }.padding(5)
+        }
     }
 }
 

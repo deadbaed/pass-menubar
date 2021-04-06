@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A3820A6261B8C5D005D3258 /* Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3820A5261B8C5D005D3258 /* Password.swift */; };
+		4A3820A9261B8E08005D3258 /* PasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3820A8261B8E08005D3258 /* PasswordView.swift */; };
 		4AACCFD9260CBE0900A5F353 /* pass_menubarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AACCFD8260CBE0900A5F353 /* pass_menubarApp.swift */; };
 		4AACCFDB260CBE0900A5F353 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AACCFDA260CBE0900A5F353 /* ContentView.swift */; };
 		4AACCFDD260CBE0A00A5F353 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AACCFDC260CBE0A00A5F353 /* Assets.xcassets */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A3820A5261B8C5D005D3258 /* Password.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Password.swift; sourceTree = "<group>"; };
+		4A3820A8261B8E08005D3258 /* PasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordView.swift; sourceTree = "<group>"; };
 		4AACCFD5260CBE0900A5F353 /* pass-menubar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pass-menubar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AACCFD8260CBE0900A5F353 /* pass_menubarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pass_menubarApp.swift; sourceTree = "<group>"; };
 		4AACCFDA260CBE0900A5F353 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -71,6 +75,8 @@
 				4AACCFE1260CBE0A00A5F353 /* Info.plist */,
 				4AACCFE2260CBE0A00A5F353 /* pass_menubar.entitlements */,
 				4AACCFDE260CBE0A00A5F353 /* Preview Content */,
+				4A3820A5261B8C5D005D3258 /* Password.swift */,
+				4A3820A8261B8E08005D3258 /* PasswordView.swift */,
 			);
 			path = "pass-menubar";
 			sourceTree = "<group>";
@@ -163,8 +169,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4AACCFDB260CBE0900A5F353 /* ContentView.swift in Sources */,
+				4A3820A9261B8E08005D3258 /* PasswordView.swift in Sources */,
 				4AACCFEB260CC01600A5F353 /* StatusBarController.swift in Sources */,
 				4AACCFEE260CC1C100A5F353 /* Settings.swift in Sources */,
+				4A3820A6261B8C5D005D3258 /* Password.swift in Sources */,
 				4AACCFD9260CBE0900A5F353 /* pass_menubarApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
