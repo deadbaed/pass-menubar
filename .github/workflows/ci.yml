@@ -8,9 +8,17 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: sersoft-gmbh/xcodebuild-action@v1
+      - name: Build
+        uses: sersoft-gmbh/xcodebuild-action@v1
         with:
           project: pass-menubar.xcodeproj
           scheme: pass-menubar
           destination: platform=macOS
           action: build
+      - name: Test
+        uses: sersoft-gmbh/xcodebuild-action@v1
+        with:
+          project: pass-menubar.xcodeproj
+          scheme: pass-menubar
+          destination: platform=macOS
+          action: test
