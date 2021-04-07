@@ -13,6 +13,12 @@ struct PasswordView: View {
 
     var body: some View {
         Text(password.display)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+            .contentShape(Rectangle())
+            .border(Color.green)
+            .onTapGesture {
+                print(password.file.path)
+            }
     }
 }
 
