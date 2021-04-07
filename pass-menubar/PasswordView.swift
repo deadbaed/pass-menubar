@@ -9,13 +9,17 @@ import SwiftUI
 import Files
 
 struct PasswordView: View {
+    @State private var isHover = false
     let password: Password
 
     var body: some View {
         Text(password.display)
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
             .contentShape(Rectangle())
-            .border(Color.green)
+            .background(isHover ? Color.red : Color.clear)
+            .onHover {
+                self.isHover = $0
+            }
             .onTapGesture {
                 print(password.file.path)
             }
