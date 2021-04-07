@@ -8,16 +8,37 @@
 import Foundation
 import Files
 
+func passwordList(path: String) -> [Password] {
+    var array: [Password] = []
+
+    do {
+        let root_passwordstore = try Folder(path: path)
+        for file in root_passwordstore.files.recursive {
+
+            // We are interested in files that have file extension ".gpg"
+            if file.path.suffix(4) != ".gpg" {
+                continue
+            }
+
+            let path = file.path
+            let relativePath = file.path(relativeTo: root_passwordstore)
+            let password = Password(path: path, relativePath: relativePath)
+            array.append(password)
+        }
+    } catch {}
+    return array
+}
+
 struct Password: Identifiable {
     let id = UUID()
-    var file: File
+    var path: String
     var display: String
 
-    init(file: File, rootFolder: Folder) {
-        self.file = file
+    init(path: String, relativePath: String) {
+        self.path = path
 
         // Construct display name
-        self.display = self.file.path(relativeTo: rootFolder)
+        self.display = relativePath
         self.display.removeLast(4) // Don't display ".gpg"
     }
 }

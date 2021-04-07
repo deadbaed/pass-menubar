@@ -21,17 +21,13 @@ struct PasswordView: View {
                 self.isHover = $0
             }
             .onTapGesture {
-                print(password.file.path)
+                print(password.path)
             }
     }
 }
 
-/*
 struct PasswordView_Previews: PreviewProvider {
     static var previews: some View {
-        let test: Password
-        // TODO: provide a password store to test with pgp key
-        PasswordView(password: test)
+        PasswordView(password: Password(path: "/Users/phil/.password-store/file.gpg", relativePath: "file"))
     }
 }
-*/

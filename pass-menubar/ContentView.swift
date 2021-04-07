@@ -8,32 +8,11 @@
 import SwiftUI
 import Files
 
-func get_list_passwords(path: String) -> [Password] {
-    var array: [Password] = []
-
-    var root_passwordstore: Folder
-    do {
-        root_passwordstore = try Folder(path: path)
-        for file in root_passwordstore.files.recursive {
-
-            // We are interested in files that have file extension ".gpg"
-            let file_ext = String(file.path.suffix(4))
-            if file_ext != ".gpg" {
-                continue
-            }
-
-            let password = Password(file: file, rootFolder: root_passwordstore)
-            array.append(password)
-        }
-    } catch {}
-    return array
-}
-
 struct ContentView: View {
     @State var search = ""
     
     // TODO: replace by path stored (add new variable isValidPath)
-    let list_files = get_list_passwords(path: "~/.password-store")
+    let list_files = passwordList(path: "~/.password-store")
 
     var body: some View {
         VStack {
