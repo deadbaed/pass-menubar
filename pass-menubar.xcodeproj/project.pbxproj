@@ -10,6 +10,7 @@
 		4A3820A6261B8C5D005D3258 /* Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3820A5261B8C5D005D3258 /* Password.swift */; };
 		4A3820A9261B8E08005D3258 /* PasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3820A8261B8E08005D3258 /* PasswordView.swift */; };
 		4A3820C3261E4D46005D3258 /* pass_menubarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3820C2261E4D46005D3258 /* pass_menubarTests.swift */; };
+		4A3820E926202F77005D3258 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 4A3820E826202F77005D3258 /* assets */; };
 		4AACCFD9260CBE0900A5F353 /* pass_menubarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AACCFD8260CBE0900A5F353 /* pass_menubarApp.swift */; };
 		4AACCFDB260CBE0900A5F353 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AACCFDA260CBE0900A5F353 /* ContentView.swift */; };
 		4AACCFDD260CBE0A00A5F353 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AACCFDC260CBE0A00A5F353 /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 		4A3820C0261E4D46005D3258 /* pass-menubarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "pass-menubarTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A3820C2261E4D46005D3258 /* pass_menubarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pass_menubarTests.swift; sourceTree = "<group>"; };
 		4A3820C4261E4D46005D3258 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4A3820E826202F77005D3258 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
 		4AACCFD5260CBE0900A5F353 /* pass-menubar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pass-menubar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AACCFD8260CBE0900A5F353 /* pass_menubarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pass_menubarApp.swift; sourceTree = "<group>"; };
 		4AACCFDA260CBE0900A5F353 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 		4A3820C1261E4D46005D3258 /* pass-menubarTests */ = {
 			isa = PBXGroup;
 			children = (
+				4A3820E826202F77005D3258 /* assets */,
 				4A3820C2261E4D46005D3258 /* pass_menubarTests.swift */,
 				4A3820C4261E4D46005D3258 /* Info.plist */,
 			);
@@ -211,6 +214,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A3820E926202F77005D3258 /* assets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

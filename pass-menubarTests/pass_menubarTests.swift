@@ -6,27 +6,19 @@
 //
 
 import XCTest
+import Files
+@testable import pass_menubar
 
 class pass_menubarTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
+    func testPasswordList() throws {
+        // Get test password store
+        let testBundle = Bundle(for: type(of: self))
+        let passwordStore = testBundle.resourcePath! + "/assets/password-store"
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
-        }
+        let passwords = passwordList(path: passwordStore)
+        XCTAssertEqual(passwords[0].display, "secret")
+        XCTAssertEqual(passwords[1].display, "sub/folder/password")
     }
 
 }
