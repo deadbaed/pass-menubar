@@ -14,13 +14,17 @@ class pass_menubarAppDelegate: NSObject, NSApplicationDelegate {
     var statusBar: StatusBarController?
     var popover = NSPopover.init()
     
+    @AppStorage("rawPathPass") private var passwordStorePath = ""
+    @AppStorage("isPassValid") private var isPassValid = false
+
     override init() {
         super.init()
     }
     
     func applicationDidFinishLaunching(_ notification: Notification) {
         // create swiftui view
-        let contentView = ContentView()
+        let passwords = isPassValid ? passwordList(path: passwordStorePath) : []
+        let contentView = ContentView(passwordList: passwords)
         
         popover.contentSize = NSSize(width: 360, height: 360)
         popover.contentViewController = NSHostingController(rootView: contentView)

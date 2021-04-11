@@ -9,7 +9,7 @@ import SwiftUI
 import Files
 import ObjectivePGP
 
-private func detectPasswordStore(path: String, text: inout String) {
+private func detectPasswordStore(path: String, text: inout String, isValid: inout Bool) {
     if path.isEmpty {
         text = ""
         return
@@ -27,10 +27,12 @@ private func detectPasswordStore(path: String, text: inout String) {
         _ = try folder.file(named: ".gpg-id")
     } catch {
         text = "⛔️ Invalid password store"
+        isValid = false
         return
     }
 
     text = "✅ Password store detected"
+    isValid = true
 }
 
 private func loadPrivateKey(path: String, text: inout String) {
@@ -67,6 +69,7 @@ private func loadPrivateKey(path: String, text: inout String) {
 struct GeneralSettingsView: View {
     @AppStorage("rawPathPass") private var rawPathPass = ""
     @AppStorage("rawPathKey") private var rawPathKey = ""
+    @AppStorage("isPassValid") private var isPassValid = false
     @State private var passStatus = ""
     @State private var keyStatus = ""
 
@@ -74,9 +77,10 @@ struct GeneralSettingsView: View {
         VStack(alignment: .leading) {
             // Password store location
             Text("Password store").fontWeight(.bold)
+            Text("Please restart the application after changing password store")
             TextField("Enter path of directory", text: $rawPathPass, onCommit: {
-                detectPasswordStore(path: rawPathPass, text: &passStatus)
-            }).onAppear { detectPasswordStore(path: rawPathPass, text: &passStatus) }
+                detectPasswordStore(path: rawPathPass, text: &passStatus, isValid: &isPassValid)
+            }).onAppear { detectPasswordStore(path: rawPathPass, text: &passStatus, isValid: &isPassValid) }
             Text(passStatus)
 
             Divider()
@@ -88,8 +92,8 @@ struct GeneralSettingsView: View {
             }).onAppear { loadPrivateKey(path: rawPathKey, text: &keyStatus) }
             Text(keyStatus)
         }
-        .padding(20)
-        .frame(width: 350, height: 100)
+        .padding(5)
+        .frame(width: 450, height: 200)
     }
 }
 
@@ -100,8 +104,8 @@ struct SecuritySettingsView: View {
         VStack(alignment: .leading) {
             Toggle("Remember passphrase", isOn: $rememberPassphrase)
         }
-        .padding(20)
-        .frame(width: 350, height: 100)
+        .padding(5)
+        .frame(width: 450, height: 200)
     }
 }
 
@@ -124,6 +128,6 @@ struct SettingsView: View {
                 .tag(Tabs.security)
         }
         .padding(20)
-        .frame(width: 375, height: 250)
+        .frame(width: 500, height: 250)
     }
 }

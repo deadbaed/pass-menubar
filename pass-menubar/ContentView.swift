@@ -10,9 +10,7 @@ import Files
 
 struct ContentView: View {
     @State var search = ""
-    
-    // TODO: replace by path stored (add new variable isValidPath)
-    let list_files = passwordList(path: "~/.password-store")
+    let passwordList: [Password]
 
     var body: some View {
         VStack {
@@ -47,7 +45,7 @@ struct ContentView: View {
                 })
             }.padding(10)
 
-            List(list_files) { password in
+            List(passwordList) { password in
                 PasswordView(password: password)
             }
         }
@@ -56,6 +54,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        let list: [Password] = []
+        ContentView(passwordList: list)
     }
 }
