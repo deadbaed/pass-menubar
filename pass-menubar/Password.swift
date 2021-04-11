@@ -11,6 +11,10 @@ import Files
 func passwordList(path: String) -> [Password] {
     var array: [Password] = []
 
+    if path.isEmpty {
+        return array
+    }
+
     do {
         let root_passwordstore = try Folder(path: path)
         for file in root_passwordstore.files.recursive {

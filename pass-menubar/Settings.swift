@@ -12,6 +12,7 @@ import ObjectivePGP
 private func detectPasswordStore(path: String, text: inout String, isValid: inout Bool) {
     if path.isEmpty {
         text = ""
+        isValid = false
         return
     }
 
