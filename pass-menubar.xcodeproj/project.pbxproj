@@ -20,6 +20,7 @@
 		4AACCFF2260CC6DA00A5F353 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 4AACCFF1260CC6DA00A5F353 /* Files */; };
 		4AACCFF6260CC70900A5F353 /* ObjectivePGP in Frameworks */ = {isa = PBXBuildFile; productRef = 4AACCFF5260CC70900A5F353 /* ObjectivePGP */; };
 		4AACCFFA260CC78D00A5F353 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 4AACCFF9260CC78D00A5F353 /* KeychainAccess */; };
+		4AD54B0726241C5B00EF6068 /* ViewWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD54B0626241C5B00EF6068 /* ViewWindowController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		4AACCFE2260CBE0A00A5F353 /* pass_menubar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = pass_menubar.entitlements; sourceTree = "<group>"; };
 		4AACCFEA260CC01600A5F353 /* StatusBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
 		4AACCFED260CC1C100A5F353 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		4AD54B0626241C5B00EF6068 /* ViewWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWindowController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				4AACCFDE260CBE0A00A5F353 /* Preview Content */,
 				4A3820A5261B8C5D005D3258 /* Password.swift */,
 				4A3820A8261B8E08005D3258 /* PasswordView.swift */,
+				4AD54B0626241C5B00EF6068 /* ViewWindowController.swift */,
 			);
 			path = "pass-menubar";
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 				4AACCFEB260CC01600A5F353 /* StatusBarController.swift in Sources */,
 				4AACCFEE260CC1C100A5F353 /* Settings.swift in Sources */,
 				4A3820A6261B8C5D005D3258 /* Password.swift in Sources */,
+				4AD54B0726241C5B00EF6068 /* ViewWindowController.swift in Sources */,
 				4AACCFD9260CBE0900A5F353 /* pass_menubarApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

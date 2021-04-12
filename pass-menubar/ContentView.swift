@@ -46,7 +46,7 @@ struct ContentView: View {
             }.padding(10)
 
             if passwordList.isEmpty {
-                Text("no passwords").frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                Text("No passwords to display").frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
             } else {
                 List(passwordList) { password in
                     PasswordView(password: password)
