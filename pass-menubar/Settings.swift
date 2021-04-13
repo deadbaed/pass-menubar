@@ -36,9 +36,10 @@ private func detectPasswordStore(path: String, text: inout String, isValid: inou
     isValid = true
 }
 
-private func loadPrivateKey(path: String, text: inout String) {
+private func loadPrivateKey(path: String, text: inout String, isValid: inout Bool) {
     if path.isEmpty {
         text = ""
+        isValid = false
         return
     }
 
@@ -47,6 +48,7 @@ private func loadPrivateKey(path: String, text: inout String) {
         file = try File(path: path)
     } catch {
         text = "⛔️ Invalid path"
+        isValid = false
         return
     }
 
@@ -61,16 +63,19 @@ private func loadPrivateKey(path: String, text: inout String) {
         }
     } catch {
         text = "⛔️ Failed to load PGP key"
+        isValid = false
         return
     }
 
     text = "✅ Using PGP key 0x\(keyID)"
+    isValid = true
 }
 
 struct GeneralSettingsView: View {
     @AppStorage("rawPathPass") private var rawPathPass = ""
     @AppStorage("rawPathKey") private var rawPathKey = ""
     @AppStorage("isPassValid") private var isPassValid = false
+    @AppStorage("isKeyValid") private var isKeyValid = false
     @State private var passStatus = ""
     @State private var keyStatus = ""
 
@@ -89,8 +94,8 @@ struct GeneralSettingsView: View {
             // PGP Key location
             Text("PGP Key").fontWeight(.bold)
             TextField("Enter path of file", text: $rawPathKey, onCommit: {
-                loadPrivateKey(path: rawPathKey, text: &keyStatus)
-            }).onAppear { loadPrivateKey(path: rawPathKey, text: &keyStatus) }
+                loadPrivateKey(path: rawPathKey, text: &keyStatus, isValid: &isKeyValid)
+            }).onAppear { loadPrivateKey(path: rawPathKey, text: &keyStatus, isValid: &isKeyValid) }
             Text(keyStatus)
         }
         .padding(5)

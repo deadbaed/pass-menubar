@@ -21,7 +21,7 @@ struct PasswordView: View {
                 self.isHover = $0
             }
             .onTapGesture {
-                let decryptView = body
+                let decryptView = DecryptView(password: password)
                 let controller = ViewWindowController(rootView: decryptView, title: password.display)
                 controller.openWindow()
             }

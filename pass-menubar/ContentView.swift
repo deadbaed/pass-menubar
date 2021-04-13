@@ -11,6 +11,7 @@ import Files
 struct ContentView: View {
     @State var search = ""
     let passwordList: [Password]
+    @AppStorage("isKeyValid") private var isKeyValid = false
 
     var body: some View {
         VStack {
@@ -47,6 +48,8 @@ struct ContentView: View {
 
             if passwordList.isEmpty {
                 Text("No passwords to display").frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+            } else if !isKeyValid {
+                Text("No pgp key present").frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
             } else {
                 List(passwordList) { password in
                     PasswordView(password: password)
