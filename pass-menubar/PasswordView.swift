@@ -21,6 +21,7 @@ struct PasswordView: View {
                 self.isHover = $0
             }
             .onTapGesture {
+                // TODO: check with macos keychain
                 let decryptView = DecryptView(password: password)
                 let controller = ViewWindowController(rootView: decryptView, title: password.display)
                 controller.openWindow()

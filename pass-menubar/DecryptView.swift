@@ -6,13 +6,55 @@
 //
 
 import SwiftUI
+import ObjectivePGP
+
+func getUserId(path: String) -> String {
+    var user = ""
+
+    do {
+        let keys = try ObjectivePGP.readKeys(fromPath: path)
+        for key in keys {
+            if let priv_key = key.secretKey {
+                user = priv_key.primaryUser!.userID
+            }
+        }
+    } catch {}
+    return user
+}
 
 struct DecryptView: View {
     let password: Password
     @AppStorage("rawPathKey") private var rawPathKey = ""
+    @State private var passphrase = ""
 
     var body: some View {
-        Text("Hello, World! \(password.path) \(rawPathKey)")
+        VStack() {
+            Text("Passphrase").font(.title)
+            Text("Enter your passphrase to unlock the secret key.")
+            Spacer()
+            HStack {
+                Text("Key ID: ")
+                Text(getUserId(path: rawPathKey))
+                Spacer()
+            }
+            HStack {
+                Text("Passphrase: ")
+                SecureField("", text: $passphrase)
+                Spacer()
+            }
+        }.padding()
+        Spacer()
+        VStack(alignment: .trailing) {
+            HStack {
+                Spacer()
+                Button("Cancel", action: {
+                    NSApplication.shared.keyWindow?.close()
+                }).keyboardShortcut(.cancelAction)
+                Button("Decrypt", action: {
+                    print($passphrase)
+                }).keyboardShortcut(.defaultAction)
+            }.padding()
+        }
     }
 }
 
