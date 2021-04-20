@@ -52,6 +52,7 @@ struct DecryptView: View {
                 }).keyboardShortcut(.cancelAction)
                 Button("Decrypt", action: {
                     print($passphrase)
+                    decrypt(path: password.path, key: rawPathKey, passphrase: passphrase)
                 }).keyboardShortcut(.defaultAction)
             }.padding()
         }

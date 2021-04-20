@@ -11,6 +11,7 @@
 		4A3820A9261B8E08005D3258 /* PasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3820A8261B8E08005D3258 /* PasswordView.swift */; };
 		4A3820C3261E4D46005D3258 /* pass_menubarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3820C2261E4D46005D3258 /* pass_menubarTests.swift */; };
 		4A3820E926202F77005D3258 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 4A3820E826202F77005D3258 /* assets */; };
+		4A800B4F262C5B8600208336 /* Decrypt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A800B4E262C5B8600208336 /* Decrypt.swift */; };
 		4AACCFD9260CBE0900A5F353 /* pass_menubarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AACCFD8260CBE0900A5F353 /* pass_menubarApp.swift */; };
 		4AACCFDB260CBE0900A5F353 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AACCFDA260CBE0900A5F353 /* ContentView.swift */; };
 		4AACCFDD260CBE0A00A5F353 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AACCFDC260CBE0A00A5F353 /* Assets.xcassets */; };
@@ -41,6 +42,7 @@
 		4A3820C2261E4D46005D3258 /* pass_menubarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pass_menubarTests.swift; sourceTree = "<group>"; };
 		4A3820C4261E4D46005D3258 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4A3820E826202F77005D3258 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
+		4A800B4E262C5B8600208336 /* Decrypt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decrypt.swift; sourceTree = "<group>"; };
 		4AACCFD5260CBE0900A5F353 /* pass-menubar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pass-menubar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AACCFD8260CBE0900A5F353 /* pass_menubarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pass_menubarApp.swift; sourceTree = "<group>"; };
 		4AACCFDA260CBE0900A5F353 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				4A3820A8261B8E08005D3258 /* PasswordView.swift */,
 				4AD54B0626241C5B00EF6068 /* ViewWindowController.swift */,
 				4AD54B0A2624CEB000EF6068 /* DecryptView.swift */,
+				4A800B4E262C5B8600208336 /* Decrypt.swift */,
 			);
 			path = "pass-menubar";
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 				4AACCFEB260CC01600A5F353 /* StatusBarController.swift in Sources */,
 				4AACCFEE260CC1C100A5F353 /* Settings.swift in Sources */,
 				4A3820A6261B8C5D005D3258 /* Password.swift in Sources */,
+				4A800B4F262C5B8600208336 /* Decrypt.swift in Sources */,
 				4AD54B0726241C5B00EF6068 /* ViewWindowController.swift in Sources */,
 				4AACCFD9260CBE0900A5F353 /* pass_menubarApp.swift in Sources */,
 			);
