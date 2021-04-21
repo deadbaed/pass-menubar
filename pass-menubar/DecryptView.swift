@@ -26,6 +26,7 @@ struct DecryptView: View {
     let password: Password
     @AppStorage("rawPathKey") private var rawPathKey = ""
     @State private var passphrase = ""
+    @State private var invalidPassphrase = false
 
     var body: some View {
         VStack() {
@@ -42,6 +43,9 @@ struct DecryptView: View {
                 SecureField("", text: $passphrase)
                 Spacer()
             }
+            if invalidPassphrase {
+                Text("You entered an invalid passphrase. Please try again.").fontWeight(.bold)
+            }
         }.padding()
         Spacer()
         VStack(alignment: .trailing) {
@@ -52,7 +56,11 @@ struct DecryptView: View {
                 }).keyboardShortcut(.cancelAction)
                 Button("Decrypt", action: {
                     print($passphrase)
-                    decrypt(path: password.path, key: rawPathKey, passphrase: passphrase)
+                    if decrypt(path: password.path, key: rawPathKey, passphrase: passphrase, line: 0) == Optional.none {
+                        invalidPassphrase = true
+                    } else {
+                        invalidPassphrase = false
+                    }
                 }).keyboardShortcut(.defaultAction)
             }.padding()
         }
