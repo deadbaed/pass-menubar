@@ -8,6 +8,12 @@
 import SwiftUI
 import ObjectivePGP
 
+func copyClipboard(str: String) -> Bool {
+    let pasteboard = NSPasteboard.general
+    pasteboard.declareTypes([.string], owner: nil)
+    return pasteboard.setString(str, forType: .string)
+}
+
 func getUserId(path: String) -> String {
     var user = ""
 
@@ -59,7 +65,11 @@ struct DecryptView: View {
                         let result = try decrypt(path: password.path, key: rawPathKey, passphrase: passphrase, line: 0)
                         print("decrypted passpword: \(result)")
                         invalidPassphrase = false
-                        // TODO: copy result to clipboard
+                        if copyClipboard(str: result) == true {
+                            print("copied to clipboard")
+                        } else {
+                            print("failed to copy to clipboard")
+                        }
                         // TODO: handle error cases and update message
                     } catch {
                         invalidPassphrase = true
