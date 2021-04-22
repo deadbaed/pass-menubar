@@ -16,7 +16,7 @@ enum DecryptError: Error {
     case stringConversion
 }
 
-func decrypt(path: String, key: String, passphrase: String, line: UInt) throws -> String {
+func decrypt(path: String, key: String, passphrase: String, line: Int) throws -> String {
     // load file from path as NSData
     guard let encrypted_data = FileManager.default.contents(atPath: path) else {
         throw DecryptError.file
@@ -39,8 +39,10 @@ func decrypt(path: String, key: String, passphrase: String, line: UInt) throws -
         throw DecryptError.stringConversion
     }
 
-    // TODO: str to word array and get line
-    // throw line error if can't find line
-
-    return decrypted_str
+    // get specific line of multi line password
+    let password = decrypted_str.components(separatedBy: "\n")
+    if password.indices.contains(line) == false {
+        throw DecryptError.line
+    }
+    return password[line]
 }

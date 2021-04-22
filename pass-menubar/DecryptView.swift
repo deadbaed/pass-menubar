@@ -55,11 +55,12 @@ struct DecryptView: View {
                     NSApplication.shared.keyWindow?.close()
                 }).keyboardShortcut(.cancelAction)
                 Button("Decrypt", action: {
-                    print($passphrase)
                     do {
-                        let decrypted_str = try decrypt(path: password.path, key: rawPathKey, passphrase: passphrase, line: 0)
-                        print("decrypted passpword: \(decrypted_str)")
+                        let result = try decrypt(path: password.path, key: rawPathKey, passphrase: passphrase, line: 0)
+                        print("decrypted passpword: \(result)")
                         invalidPassphrase = false
+                        // TODO: copy result to clipboard
+                        // TODO: handle error cases and update message
                     } catch {
                         invalidPassphrase = true
                     }
