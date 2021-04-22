@@ -7,23 +7,40 @@
 
 import ObjectivePGP
 
-func decrypt(path: String, key: String, passphrase: String, line: UInt) -> String? {
+enum DecryptError: Error {
+    case file
+    case key
+    case passphrase
+    case line
+    case decryption
+    case stringConversion
+}
+
+func decrypt(path: String, key: String, passphrase: String, line: UInt) throws -> String {
     // load file from path as NSData
-    let data = FileManager.default.contents(atPath: path)
-    if data == Optional.none {
-        return Optional.none
+    guard let encrypted_data = FileManager.default.contents(atPath: path) else {
+        throw DecryptError.file
     }
 
-    do {
-        // load key
-        let key = try ObjectivePGP.readKeys(fromPath: key)
+    // open pgp key
+    guard let key = try? ObjectivePGP.readKeys(fromPath: key) else {
+        throw DecryptError.key
+    }
 
-        // attempt to decrypt data with key and passphrase
-        let decrypted_data = try ObjectivePGP.decrypt(data!, andVerifySignature: false, using: key, passphraseForKey: { (key) -> String? in
-            return passphrase
-        })
-        let decrypted_str = String(data: decrypted_data, encoding: .utf8)
-        print(decrypted_str)
-        return decrypted_str
-    } catch { return Optional.none }
+    // decrypt file
+    guard let decrypted_data = try? ObjectivePGP.decrypt(encrypted_data, andVerifySignature: false, using: key, passphraseForKey: { (key) -> String? in
+        return passphrase
+    }) else {
+        throw DecryptError.decryption
+    }
+
+    // convert raw bytes to a string
+    guard let decrypted_str = String(data: decrypted_data, encoding: .utf8) else {
+        throw DecryptError.stringConversion
+    }
+
+    // TODO: str to word array and get line
+    // throw line error if can't find line
+
+    return decrypted_str
 }

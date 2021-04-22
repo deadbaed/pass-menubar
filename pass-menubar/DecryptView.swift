@@ -56,10 +56,12 @@ struct DecryptView: View {
                 }).keyboardShortcut(.cancelAction)
                 Button("Decrypt", action: {
                     print($passphrase)
-                    if decrypt(path: password.path, key: rawPathKey, passphrase: passphrase, line: 0) == Optional.none {
-                        invalidPassphrase = true
-                    } else {
+                    do {
+                        let decrypted_str = try decrypt(path: password.path, key: rawPathKey, passphrase: passphrase, line: 0)
+                        print("decrypted passpword: \(decrypted_str)")
                         invalidPassphrase = false
+                    } catch {
+                        invalidPassphrase = true
                     }
                 }).keyboardShortcut(.defaultAction)
             }.padding()
