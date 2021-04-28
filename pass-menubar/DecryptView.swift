@@ -7,6 +7,7 @@
 
 import SwiftUI
 import ObjectivePGP
+import UserNotifications
 
 func copyClipboard(str: String) -> Bool {
     let pasteboard = NSPasteboard.general
@@ -66,7 +67,9 @@ struct DecryptView: View {
                         print("decrypted passpword: \(result)")
                         invalidPassphrase = false
                         if copyClipboard(str: result) == true {
+                            // todo: close the window (for notification to be shown to user)
                             print("copied to clipboard")
+                            sendNotification(password: password, timeInterval: 3)
                         } else {
                             print("failed to copy to clipboard")
                         }
