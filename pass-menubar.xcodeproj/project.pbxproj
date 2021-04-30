@@ -23,7 +23,6 @@
 		4AACCFFA260CC78D00A5F353 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 4AACCFF9260CC78D00A5F353 /* KeychainAccess */; };
 		4AD54B0726241C5B00EF6068 /* ViewWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD54B0626241C5B00EF6068 /* ViewWindowController.swift */; };
 		4AD54B0B2624CEB000EF6068 /* DecryptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD54B0A2624CEB000EF6068 /* DecryptView.swift */; };
-		4AF65C762639375A00FA72BF /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF65C752639375A00FA72BF /* Notification.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,7 +54,6 @@
 		4AACCFED260CC1C100A5F353 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		4AD54B0626241C5B00EF6068 /* ViewWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWindowController.swift; sourceTree = "<group>"; };
 		4AD54B0A2624CEB000EF6068 /* DecryptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecryptView.swift; sourceTree = "<group>"; };
-		4AF65C752639375A00FA72BF /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,7 +121,6 @@
 				4AD54B0626241C5B00EF6068 /* ViewWindowController.swift */,
 				4AD54B0A2624CEB000EF6068 /* DecryptView.swift */,
 				4A800B4E262C5B8600208336 /* Decrypt.swift */,
-				4AF65C752639375A00FA72BF /* Notification.swift */,
 			);
 			path = "pass-menubar";
 			sourceTree = "<group>";
@@ -260,7 +257,6 @@
 				4AACCFEB260CC01600A5F353 /* StatusBarController.swift in Sources */,
 				4AACCFEE260CC1C100A5F353 /* Settings.swift in Sources */,
 				4A3820A6261B8C5D005D3258 /* Password.swift in Sources */,
-				4AF65C762639375A00FA72BF /* Notification.swift in Sources */,
 				4A800B4F262C5B8600208336 /* Decrypt.swift in Sources */,
 				4AD54B0726241C5B00EF6068 /* ViewWindowController.swift in Sources */,
 				4AACCFD9260CBE0900A5F353 /* pass_menubarApp.swift in Sources */,

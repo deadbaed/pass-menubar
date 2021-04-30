@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import UserNotifications
 
 class pass_menubarAppDelegate: NSObject, NSApplicationDelegate {
     var statusBarItem: NSStatusItem?
@@ -35,13 +34,6 @@ class pass_menubarAppDelegate: NSObject, NSApplicationDelegate {
         
         // init status bar
         statusBar = StatusBarController.init(popover)
-
-        // ask to send notifications
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert]) { granted, error in
-            if let error = error {
-                print("no notifications: \(error)")
-            }
-        }
     }
 }
 
