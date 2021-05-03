@@ -10,7 +10,6 @@ import ObjectivePGP
 enum DecryptError: Error {
     case file
     case key
-    case passphrase
     case line
     case decryption
     case stringConversion
