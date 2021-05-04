@@ -116,6 +116,15 @@ struct DecryptView: View {
                         NSApplication.shared.keyWindow?.close()
                     }
                 }
+            Button("Clear now", action: {
+                print("clear password now")
+                if clearClipboard() == true {
+                    print("clipboard has been cleared")
+                } else {
+                    print("failed to clear clipboard")
+                }
+                NSApplication.shared.keyWindow?.close()
+            }).keyboardShortcut(.defaultAction)
         }
     }
 }
