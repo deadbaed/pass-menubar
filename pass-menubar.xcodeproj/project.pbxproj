@@ -12,6 +12,7 @@
 		4A3820C3261E4D46005D3258 /* pass_menubarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3820C2261E4D46005D3258 /* pass_menubarTests.swift */; };
 		4A3820E926202F77005D3258 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 4A3820E826202F77005D3258 /* assets */; };
 		4A800B4F262C5B8600208336 /* Decrypt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A800B4E262C5B8600208336 /* Decrypt.swift */; };
+		4AA2C05C264271EF00CC839D /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA2C05B264271EF00CC839D /* Keychain.swift */; };
 		4AACCFD9260CBE0900A5F353 /* pass_menubarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AACCFD8260CBE0900A5F353 /* pass_menubarApp.swift */; };
 		4AACCFDB260CBE0900A5F353 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AACCFDA260CBE0900A5F353 /* ContentView.swift */; };
 		4AACCFDD260CBE0A00A5F353 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AACCFDC260CBE0A00A5F353 /* Assets.xcassets */; };
@@ -43,6 +44,7 @@
 		4A3820C4261E4D46005D3258 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4A3820E826202F77005D3258 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
 		4A800B4E262C5B8600208336 /* Decrypt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decrypt.swift; sourceTree = "<group>"; };
+		4AA2C05B264271EF00CC839D /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		4AACCFD5260CBE0900A5F353 /* pass-menubar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pass-menubar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AACCFD8260CBE0900A5F353 /* pass_menubarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pass_menubarApp.swift; sourceTree = "<group>"; };
 		4AACCFDA260CBE0900A5F353 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				4AD54B0626241C5B00EF6068 /* ViewWindowController.swift */,
 				4AD54B0A2624CEB000EF6068 /* DecryptView.swift */,
 				4A800B4E262C5B8600208336 /* Decrypt.swift */,
+				4AA2C05B264271EF00CC839D /* Keychain.swift */,
 			);
 			path = "pass-menubar";
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 				4A800B4F262C5B8600208336 /* Decrypt.swift in Sources */,
 				4AD54B0726241C5B00EF6068 /* ViewWindowController.swift in Sources */,
 				4AACCFD9260CBE0900A5F353 /* pass_menubarApp.swift in Sources */,
+				4AA2C05C264271EF00CC839D /* Keychain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,9 +437,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "pass-menubar/pass_menubar.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"pass-menubar/Preview Content\"";
+				DEVELOPMENT_TEAM = TJF6968X7E;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "pass-menubar/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -455,9 +461,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "pass-menubar/pass_menubar.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"pass-menubar/Preview Content\"";
+				DEVELOPMENT_TEAM = TJF6968X7E;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "pass-menubar/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
