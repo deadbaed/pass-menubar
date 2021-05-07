@@ -35,6 +35,7 @@ func getUserId(path: String) -> String {
 struct DecryptView: View {
     let password: Password
     @AppStorage("rawPathKey") private var rawPathKey = ""
+    @AppStorage("rememberPassphrase") private var rememberPassphrase = false
     @State private var passphrase = ""
     @State private var decryptError = false
     @State private var askPassphrase = true
@@ -95,6 +96,11 @@ struct DecryptView: View {
                                 decryptErrorMessage = "Your password is empty."
                             default:
                                 decryptErrorMessage = "Unknown error."
+                            }
+                        }
+                        if (rememberPassphrase) {
+                            if (addPassphraseForKeyTouchID(keyId: rawPathKey, passphrase: passphrase) == false) {
+                                print("failed to set passphrase to keychain")
                             }
                         }
                     }).keyboardShortcut(.defaultAction)
