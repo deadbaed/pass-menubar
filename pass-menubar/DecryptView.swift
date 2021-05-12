@@ -99,8 +99,10 @@ struct DecryptView: View {
                             }
                         }
                         if (rememberPassphrase) {
-                            if (addPassphraseForKeyTouchID(keyId: rawPathKey, passphrase: passphrase) == false) {
-                                print("failed to set passphrase to keychain")
+                            do {
+                                try addPassphraseForKeyTouchID(keyId: rawPathKey, passphrase: passphrase)
+                            } catch {
+                                print("failed to set passphrase to keychain: \(error)")
                             }
                         }
                     }).keyboardShortcut(.defaultAction)

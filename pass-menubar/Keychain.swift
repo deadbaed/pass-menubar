@@ -16,8 +16,7 @@ enum KeychainAddError: Error {
 }
 
 
-func addPassphraseForKeyTouchID(keyId: String, passphrase: String) throws -> Bool {
-    var ret = true
+func addPassphraseForKeyTouchID(keyId: String, passphrase: String) throws {
     guard let appId = Bundle.main.bundleIdentifier else {
         throw KeychainAddError.noAppID
     }
@@ -33,5 +32,4 @@ func addPassphraseForKeyTouchID(keyId: String, passphrase: String) throws -> Boo
             // throw error
         }
     }
-    return false
 }

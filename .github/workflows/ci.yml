@@ -8,11 +8,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Install fastlane
+        run: bundle install
       - name: Build
-        uses: sersoft-gmbh/xcodebuild-action@v1
-        with:
-          project: pass-menubar.xcodeproj
-          scheme: pass-menubar
-          destination: platform=macOS
-          action: build
-          allow-provisioning-updates: true
+        run: bundle exec fastlane build
