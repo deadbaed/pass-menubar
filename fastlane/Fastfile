@@ -15,8 +15,10 @@
 
 default_platform(:mac)
 
-lane :build do
-  build_mac_app(
-    export_method: "mac-application"
-  )
+platform :mac do
+  lane :build do
+    build_mac_app(
+      export_method: "mac-application"
+    )
+  end
 end
