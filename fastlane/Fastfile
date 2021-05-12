@@ -13,11 +13,10 @@
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
 
-default_platform(:macos)
+default_platform(:mac)
 
-platform :macos do
-  desc "Build macos app"
-  lane :build do
-    build_mac_app
-  end
+lane :build do
+  build_mac_app(
+    export_method: "mac-application"
+  )
 end
