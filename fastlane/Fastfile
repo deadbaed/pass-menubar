@@ -18,7 +18,8 @@ default_platform(:mac)
 platform :mac do
   lane :build do
     build_mac_app(
-      export_method: "mac-application"
+      export_method: "mac-application",
+      xcargs: "-allowProvisioningUpdates"
     )
   end
 end
