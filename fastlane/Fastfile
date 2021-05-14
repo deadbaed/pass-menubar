@@ -17,6 +17,8 @@ default_platform(:mac)
 
 platform :mac do
   lane :build do
+    get_certificates           # invokes cert
+    get_provisioning_profile   # invokes sigh
     build_mac_app(
       export_method: "mac-application",
       xcargs: "-allowProvisioningUpdates"
