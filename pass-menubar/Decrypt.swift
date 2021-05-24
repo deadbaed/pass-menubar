@@ -22,12 +22,12 @@ func decrypt(path: String, key: String, passphrase: String, line: Int) throws ->
     }
 
     // open pgp key
-    guard let key = try? ObjectivePGP.readKeys(fromPath: key) else {
+    guard let keys = try? ObjectivePGP.readKeys(fromPath: key) else {
         throw DecryptError.key
     }
 
     // decrypt file
-    guard let decrypted_data = try? ObjectivePGP.decrypt(encrypted_data, andVerifySignature: false, using: key, passphraseForKey: { (key) -> String? in
+    guard let decrypted_data = try? ObjectivePGP.decrypt(encrypted_data, andVerifySignature: false, using: keys, passphraseForKey: { (key) -> String? in
         return passphrase
     }) else {
         throw DecryptError.decryption
