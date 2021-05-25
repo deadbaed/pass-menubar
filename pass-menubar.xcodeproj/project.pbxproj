@@ -23,6 +23,7 @@
 		4AACCFFA260CC78D00A5F353 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 4AACCFF9260CC78D00A5F353 /* KeychainAccess */; };
 		4AD54B0726241C5B00EF6068 /* ViewWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD54B0626241C5B00EF6068 /* ViewWindowController.swift */; };
 		4AD54B0B2624CEB000EF6068 /* DecryptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD54B0A2624CEB000EF6068 /* DecryptView.swift */; };
+		4AD6E3D4265AF35700AFFFA7 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD6E3D3265AF35700AFFFA7 /* Keychain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		4AACCFED260CC1C100A5F353 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		4AD54B0626241C5B00EF6068 /* ViewWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWindowController.swift; sourceTree = "<group>"; };
 		4AD54B0A2624CEB000EF6068 /* DecryptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecryptView.swift; sourceTree = "<group>"; };
+		4AD6E3D3265AF35700AFFFA7 /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 		4AACCFD7260CBE0900A5F353 /* pass-menubar */ = {
 			isa = PBXGroup;
 			children = (
+				4AD6E3D3265AF35700AFFFA7 /* Keychain.swift */,
 				4AACCFED260CC1C100A5F353 /* Settings.swift */,
 				4AACCFEA260CC01600A5F353 /* StatusBarController.swift */,
 				4AACCFD8260CBE0900A5F353 /* pass_menubarApp.swift */,
@@ -260,6 +263,7 @@
 				4A800B4F262C5B8600208336 /* Decrypt.swift in Sources */,
 				4AD54B0726241C5B00EF6068 /* ViewWindowController.swift in Sources */,
 				4AACCFD9260CBE0900A5F353 /* pass_menubarApp.swift in Sources */,
+				4AD6E3D4265AF35700AFFFA7 /* Keychain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,9 +437,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "pass-menubar/pass_menubar.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"pass-menubar/Preview Content\"";
+				DEVELOPMENT_TEAM = TJF6968X7E;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "pass-menubar/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -455,9 +461,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "pass-menubar/pass_menubar.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"pass-menubar/Preview Content\"";
+				DEVELOPMENT_TEAM = TJF6968X7E;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "pass-menubar/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (

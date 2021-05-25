@@ -15,6 +15,15 @@ enum DecryptError: Error {
     case stringConversion
 }
 
+func extractKeyIdFromPrivateKey(keys: [Key]) -> String {
+    for key in keys {
+        if let priv_key = key.secretKey {
+            return "\(priv_key.keyID)"
+        }
+    }
+    return ""
+}
+
 func decrypt(path: String, key: String, passphrase: String, line: Int) throws -> String {
     // load file from path as NSData
     guard let encrypted_data = FileManager.default.contents(atPath: path) else {
@@ -32,6 +41,9 @@ func decrypt(path: String, key: String, passphrase: String, line: Int) throws ->
     }) else {
         throw DecryptError.decryption
     }
+
+    let keyID = extractKeyIdFromPrivateKey(keys: keys);
+    try savePassphrase(keyId: keyID, passphrase: passphrase)
 
     // convert raw bytes to a string
     guard let decrypted_str = String(data: decrypted_data, encoding: .utf8) else {

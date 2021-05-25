@@ -55,12 +55,7 @@ private func loadPrivateKey(path: String, text: inout String, isValid: inout Boo
     var keyID = ""
     do {
         let keys = try ObjectivePGP.readKeys(fromPath: file.path)
-        for key in keys {
-            if let priv_key = key.secretKey {
-                keyID = "\(priv_key.keyID)"
-                break
-            }
-        }
+        keyID = extractKeyIdFromPrivateKey(keys: keys)
     } catch {
         text = "⛔️ Failed to load PGP key"
         isValid = false
