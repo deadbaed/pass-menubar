@@ -8,16 +8,6 @@
 import SwiftUI
 import ObjectivePGP
 
-func copyClipboard(str: String) -> Bool {
-    let pasteboard = NSPasteboard.general
-    pasteboard.declareTypes([.string], owner: nil)
-    return pasteboard.setString(str, forType: .string)
-}
-
-func clearClipboard() -> Bool {
-    return copyClipboard(str: "")
-}
-
 func getUserId(path: String) -> String {
     var user = ""
 
