@@ -38,13 +38,13 @@ struct DecryptView: View {
     @AppStorage("rememberPassphrase") private var rememberPassphrase = false
     @State private var passphrase = ""
     @State private var decryptError = false
-    @State private var askPassphrase = true
+    @State private var fileDecrypt = false
     @State private var timeLeft = 45
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State private var decryptErrorMessage = ""
 
     var body: some View {
-        if (askPassphrase) {
+        if (!fileDecrypt) {
             VStack() {
                 Text("Passphrase").font(.title)
                 Text("Enter your passphrase to unlock the secret key.")
@@ -77,7 +77,7 @@ struct DecryptView: View {
                             decryptError = false
                             if copyClipboard(str: result) == true {
                                 print("copied to clipboard")
-                                askPassphrase = false
+                                fileDecrypt = true
                             } else {
                                 print("failed to copy to clipboard")
                             }
