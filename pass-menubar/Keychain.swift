@@ -11,7 +11,7 @@ import KeychainAccess
 func savePassphrase(keyId: String, passphrase: String) throws {
     let keychain = Keychain(service: "pass-menubar")
     
-    DispatchQueue.global().async {
+    DispatchQueue.global().sync {
         do {
             try keychain.accessibility(.whenUnlocked, authenticationPolicy: .userPresence)
                 .set(passphrase, key: keyId)
@@ -21,14 +21,17 @@ func savePassphrase(keyId: String, passphrase: String) throws {
     }
 }
 
-func getPassphrase(keyId: String) throws {
+func getPassphrase(keyId: String, completion: @escaping ((String) -> Void)) throws {
     let keychain = Keychain(service: "pass-menubar")
     
-    DispatchQueue.global().async {
+    DispatchQueue.global().sync {
         do {
-            let password = try keychain.get(keyId)
+            let optionalPassphrase = try keychain.get(keyId)
             
-            print("got passphrase: \(password)")
+            if let passphrase = optionalPassphrase {
+                print("got passphrase: \(passphrase)")
+                completion(passphrase)
+            }
         } catch let error {
             print(error)
         }

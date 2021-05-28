@@ -11,6 +11,7 @@ import Files
 struct PasswordView: View {
     @State private var isHover = false
     let password: Password
+    @AppStorage("rawPathKey") private var rawPathKey = ""
 
     var body: some View {
         Text(password.display)
@@ -21,10 +22,30 @@ struct PasswordView: View {
                 self.isHover = $0
             }
             .onTapGesture {
-                // TODO: check with macos keychain
-                let decryptView = DecryptView(password: password)
-                let controller = ViewWindowController(rootView: decryptView, title: password.display)
-                controller.openWindow()
+                do {
+                    // Attempt to get passphrase from macos keychain
+                    let keyId = extractKeyIdFromFile(path: rawPathKey)
+                    try getPassphrase(keyId: keyId) { (passphrase) in
+                        print("got passphrase from keychain: \(passphrase)")
+
+                        // Attempt to decrypt with passphrase from keychain
+                        let result = try? decrypt(path: password.path, key: rawPathKey, passphrase: passphrase, line: 0)
+                        if let result = result {
+                            print("decryption result: \(result)")
+
+                            // Display success view, and copy to clipboard
+                            let decryptSuccessView = DecryptSuccessView(password: password, decryptedPassword: result)
+                            let controller = ViewWindowController(rootView: decryptSuccessView, title: password.display)
+                            controller.openWindow()
+                        }
+                    }
+                } catch {
+                    print("error while decrypting : \(error)")
+                    print("gonna show passphrase prompt")
+                    let decryptView = DecryptView(password: password)
+                    let controller = ViewWindowController(rootView: decryptView, title: password.display)
+                    controller.openWindow()
+                }
             }
     }
 }

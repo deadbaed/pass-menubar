@@ -65,12 +65,7 @@ struct DecryptView: View {
                         do {
                             let result = try decrypt(path: password.path, key: rawPathKey, passphrase: passphrase, line: 0)
                             decryptError = false
-                            if copyClipboard(str: result) == true {
-                                print("copied to clipboard")
-                                fileDecrypt = true
-                            } else {
-                                print("failed to copy to clipboard")
-                            }
+                            fileDecrypt = true
                         } catch {
                             decryptError = true
                             switch error {
@@ -92,30 +87,7 @@ struct DecryptView: View {
                 }.padding()
             }
         } else {
-            Text("Password has been copied to clipboard.").fontWeight(.bold)
-            Text("Will clear in \(timeLeft) seconds.").fontWeight(.bold)
-                .onReceive(timer) { _ in
-                    if timeLeft > 0 {
-                        timeLeft -= 1
-                    } else {
-                        // Clear clipboard and close window when timer is over
-                        if clearClipboard() == true {
-                            print("clipboard has been cleared")
-                        } else {
-                            print("failed to clear clipboard")
-                        }
-                        NSApplication.shared.keyWindow?.close()
-                    }
-                }
-            Button("Clear now", action: {
-                print("clear password now")
-                if clearClipboard() == true {
-                    print("clipboard has been cleared")
-                } else {
-                    print("failed to clear clipboard")
-                }
-                NSApplication.shared.keyWindow?.close()
-            }).keyboardShortcut(.defaultAction)
+            Text("replace view by decryptsucessView")
         }
     }
 }

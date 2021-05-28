@@ -15,6 +15,13 @@ enum DecryptError: Error {
     case stringConversion
 }
 
+func extractKeyIdFromFile(path: String) -> String {
+    guard let keys = try? ObjectivePGP.readKeys(fromPath: path) else {
+        return ""
+    }
+    return extractKeyIdFromPrivateKey(keys: keys)
+}
+
 func extractKeyIdFromPrivateKey(keys: [Key]) -> String {
     for key in keys {
         if let priv_key = key.secretKey {
@@ -42,7 +49,7 @@ func decrypt(path: String, key: String, passphrase: String, line: Int) throws ->
         throw DecryptError.decryption
     }
 
-    let keyID = extractKeyIdFromPrivateKey(keys: keys);
+    let keyID = extractKeyIdFromPrivateKey(keys: keys)
     try savePassphrase(keyId: keyID, passphrase: passphrase)
 
     // convert raw bytes to a string
