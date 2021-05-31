@@ -31,7 +31,7 @@ func extractKeyIdFromPrivateKey(keys: [Key]) -> String {
     return ""
 }
 
-func decrypt(path: String, key: String, passphrase: String, line: Int) throws -> String {
+func decrypt(path: String, key: String, passphrase: String, line: Int, remember: Bool) throws -> String {
     // load file from path as NSData
     guard let encrypted_data = FileManager.default.contents(atPath: path) else {
         throw DecryptError.file
@@ -49,8 +49,10 @@ func decrypt(path: String, key: String, passphrase: String, line: Int) throws ->
         throw DecryptError.decryption
     }
 
-    let keyID = extractKeyIdFromPrivateKey(keys: keys)
-    try savePassphrase(keyId: keyID, passphrase: passphrase)
+    if (remember == true) {
+        let keyID = extractKeyIdFromPrivateKey(keys: keys)
+        try savePassphrase(keyId: keyID, passphrase: passphrase)
+    }
 
     // convert raw bytes to a string
     guard let decrypted_str = String(data: decrypted_data, encoding: .utf8) else {

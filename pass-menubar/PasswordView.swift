@@ -12,6 +12,7 @@ struct PasswordView: View {
     @State private var isHover = false
     let password: Password
     @AppStorage("rawPathKey") private var rawPathKey = ""
+    @AppStorage("rememberPassphrase") private var rememberPassphrase = false
     @State private var successKeychain = false
 
     var body: some View {
@@ -30,7 +31,7 @@ struct PasswordView: View {
                         print("got passphrase from keychain: \(passphrase)")
 
                         // Attempt to decrypt with passphrase from keychain
-                        let result = try? decrypt(path: password.path, key: rawPathKey, passphrase: passphrase, line: 0)
+                        let result = try? decrypt(path: password.path, key: rawPathKey, passphrase: passphrase, line: 0, remember: rememberPassphrase)
                         if let result = result {
                             print("decryption result: \(result)")
 
