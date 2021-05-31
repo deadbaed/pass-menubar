@@ -12,6 +12,7 @@ struct PasswordView: View {
     @State private var isHover = false
     let password: Password
     @AppStorage("rawPathKey") private var rawPathKey = ""
+    @State private var successKeychain = false
 
     var body: some View {
         Text(password.display)
@@ -37,15 +38,17 @@ struct PasswordView: View {
                             let decryptSuccessView = DecryptSuccessView(password: password, decryptedPassword: result)
                             let controller = ViewWindowController(rootView: decryptSuccessView, title: password.display)
                             controller.openWindow()
+                            successKeychain = true
                         }
                     }
                 } catch {
                     print("error while decrypting with passphrase from macos keychain: \(error)")
                 }
-                print("gonna show passphrase prompt")
-                let decryptView = DecryptView(password: password)
-                let controller = ViewWindowController(rootView: decryptView, title: password.display)
-                controller.openWindow()
+                if (successKeychain == false) {
+                    let decryptView = DecryptView(password: password)
+                    let controller = ViewWindowController(rootView: decryptView, title: password.display)
+                    controller.openWindow()
+                }
             }
     }
 }
