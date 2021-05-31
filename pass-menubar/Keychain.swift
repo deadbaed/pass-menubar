@@ -38,11 +38,16 @@ func getPassphrase(keyId: String, completion: @escaping ((String) -> Void)) thro
     }
 }
 
-func getAllKeys() {
+func removeAllKeys() throws {
     let keychain = Keychain(service: "pass-menubar")
-
     let keys = keychain.allKeys()
-    for key in keys {
-      print("key: \(key)")
+
+    do {
+        for key in keys {
+            try keychain.remove(key)
+        }
+    } catch {
+        print("could not remove all keys from keychain")
+        print(error)
     }
 }

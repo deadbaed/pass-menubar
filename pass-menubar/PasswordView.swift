@@ -40,12 +40,12 @@ struct PasswordView: View {
                         }
                     }
                 } catch {
-                    print("error while decrypting : \(error)")
-                    print("gonna show passphrase prompt")
-                    let decryptView = DecryptView(password: password)
-                    let controller = ViewWindowController(rootView: decryptView, title: password.display)
-                    controller.openWindow()
+                    print("error while decrypting with passphrase from macos keychain: \(error)")
                 }
+                print("gonna show passphrase prompt")
+                let decryptView = DecryptView(password: password)
+                let controller = ViewWindowController(rootView: decryptView, title: password.display)
+                controller.openWindow()
             }
     }
 }

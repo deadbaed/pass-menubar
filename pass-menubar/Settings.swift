@@ -104,6 +104,9 @@ struct SecuritySettingsView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Toggle("Remember passphrase", isOn: $rememberPassphrase)
+            Button("Remove all remembered keys") {
+                try? removeAllKeys()
+            }
         }
         .padding(5)
         .frame(width: 450, height: 200)
