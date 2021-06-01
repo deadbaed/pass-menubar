@@ -27,67 +27,58 @@ struct DecryptView: View {
     @AppStorage("rawPathKey") private var rawPathKey = ""
     @AppStorage("rememberPassphrase") private var rememberPassphrase = false
     @State private var passphrase = ""
-    @State private var decryptError = false
-    @State private var fileDecrypt = false
     @State private var timeLeft = 45
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State private var decryptErrorMessage = ""
 
     var body: some View {
-        if (!fileDecrypt) {
-            VStack() {
-                Text("Passphrase").font(.title)
-                Text("Enter your passphrase to unlock the secret key.")
-                Spacer()
-                HStack {
-                    Text("Key ID: ")
-                    Text(getUserId(path: rawPathKey))
-                    Spacer()
-                }
-                HStack {
-                    Text("Passphrase: ")
-                    SecureField("", text: $passphrase)
-                    Spacer()
-                }
-                if decryptError {
-                    Text(decryptErrorMessage).fontWeight(.bold)
-                    Text("Please try again").fontWeight(.bold)
-                }
-            }.padding()
+        VStack() {
+            Text("Passphrase").font(.title)
+            Text("Enter your passphrase to unlock the secret key.")
             Spacer()
-            VStack(alignment: .trailing) {
-                HStack {
-                    Spacer()
-                    Button("Cancel", action: {
-                        NSApplication.shared.keyWindow?.close()
-                    }).keyboardShortcut(.cancelAction)
-                    Button("Decrypt", action: {
-                        do {
-                            let result = try decrypt(path: password.path, key: rawPathKey, passphrase: passphrase, line: 0, remember: rememberPassphrase)
-                            decryptError = false
-                            fileDecrypt = true
-                        } catch {
-                            decryptError = true
-                            switch error {
-                            case DecryptError.decryption:
-                                decryptErrorMessage = "You entered an invalid passphrase."
-                            case DecryptError.file:
-                                decryptErrorMessage = "Failed to find password to decrypt. Make sure it exists."
-                            case DecryptError.key:
-                                decryptErrorMessage = "Failed to find key to decrypt password. Make sure it exists."
-                            case DecryptError.stringConversion:
-                                decryptErrorMessage = "Could not convert decrypted password to a human readable text."
-                            case DecryptError.line:
-                                decryptErrorMessage = "Your password is empty."
-                            default:
-                                decryptErrorMessage = "Unknown error."
-                            }
-                        }
-                    }).keyboardShortcut(.defaultAction)
-                }.padding()
+            HStack {
+                Text("Key ID: ")
+                Text(getUserId(path: rawPathKey))
+                Spacer()
             }
-        } else {
-            Text("replace view by decryptsucessView")
+            HStack {
+                Text("Passphrase: ")
+                SecureField("", text: $passphrase)
+                Spacer()
+            }
+            if !decryptErrorMessage.isEmpty {
+                Text(decryptErrorMessage).fontWeight(.bold)
+                Text("Please try again").fontWeight(.bold)
+            }
+        }.padding()
+        Spacer()
+        VStack(alignment: .trailing) {
+            HStack {
+                Spacer()
+                Button("Cancel", action: {
+                    NSApplication.shared.keyWindow?.close()
+                }).keyboardShortcut(.cancelAction)
+                Button("Decrypt", action: {
+                    do {
+                        let result = try decrypt(path: password.path, key: rawPathKey, passphrase: passphrase, line: 0, remember: rememberPassphrase)
+                    } catch {
+                        switch error {
+                        case DecryptError.decryption:
+                            decryptErrorMessage = "You entered an invalid passphrase."
+                        case DecryptError.file:
+                            decryptErrorMessage = "Failed to find password to decrypt. Make sure it exists."
+                        case DecryptError.key:
+                            decryptErrorMessage = "Failed to find key to decrypt password. Make sure it exists."
+                        case DecryptError.stringConversion:
+                            decryptErrorMessage = "Could not convert decrypted password to a human readable text."
+                        case DecryptError.line:
+                            decryptErrorMessage = "Your password is empty."
+                        default:
+                            decryptErrorMessage = "Unknown error."
+                        }
+                    }
+                }).keyboardShortcut(.defaultAction)
+            }.padding()
         }
     }
 }
