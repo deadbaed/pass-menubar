@@ -24,7 +24,7 @@
 		4AACCFF6260CC70900A5F353 /* ObjectivePGP in Frameworks */ = {isa = PBXBuildFile; productRef = 4AACCFF5260CC70900A5F353 /* ObjectivePGP */; };
 		4AACCFFA260CC78D00A5F353 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 4AACCFF9260CC78D00A5F353 /* KeychainAccess */; };
 		4AD54B0726241C5B00EF6068 /* ViewWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD54B0626241C5B00EF6068 /* ViewWindowController.swift */; };
-		4AD54B0B2624CEB000EF6068 /* DecryptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD54B0A2624CEB000EF6068 /* DecryptView.swift */; };
+		4AD54B0B2624CEB000EF6068 /* DecryptPassphraseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD54B0A2624CEB000EF6068 /* DecryptPassphraseView.swift */; };
 		4AD6E3D4265AF35700AFFFA7 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD6E3D3265AF35700AFFFA7 /* Keychain.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,7 +58,7 @@
 		4AACCFEA260CC01600A5F353 /* StatusBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
 		4AACCFED260CC1C100A5F353 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		4AD54B0626241C5B00EF6068 /* ViewWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWindowController.swift; sourceTree = "<group>"; };
-		4AD54B0A2624CEB000EF6068 /* DecryptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecryptView.swift; sourceTree = "<group>"; };
+		4AD54B0A2624CEB000EF6068 /* DecryptPassphraseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecryptPassphraseView.swift; sourceTree = "<group>"; };
 		4AD6E3D3265AF35700AFFFA7 /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,7 +127,7 @@
 				4A3820A5261B8C5D005D3258 /* Password.swift */,
 				4A3820A8261B8E08005D3258 /* PasswordView.swift */,
 				4AD54B0626241C5B00EF6068 /* ViewWindowController.swift */,
-				4AD54B0A2624CEB000EF6068 /* DecryptView.swift */,
+				4AD54B0A2624CEB000EF6068 /* DecryptPassphraseView.swift */,
 				4A800B4E262C5B8600208336 /* Decrypt.swift */,
 				4A8C67FF265F6E31004857D7 /* DecryptSuccessView.swift */,
 			);
@@ -262,7 +262,7 @@
 			files = (
 				4AACCFDB260CBE0900A5F353 /* ContentView.swift in Sources */,
 				4A3820A9261B8E08005D3258 /* PasswordView.swift in Sources */,
-				4AD54B0B2624CEB000EF6068 /* DecryptView.swift in Sources */,
+				4AD54B0B2624CEB000EF6068 /* DecryptPassphraseView.swift in Sources */,
 				4AACCFEB260CC01600A5F353 /* StatusBarController.swift in Sources */,
 				4AACCFEE260CC1C100A5F353 /* Settings.swift in Sources */,
 				4A8C67FE265E1E38004857D7 /* Clipboard.swift in Sources */,

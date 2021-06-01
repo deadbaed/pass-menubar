@@ -46,7 +46,7 @@ struct PasswordView: View {
                     print("error while decrypting with passphrase from macos keychain: \(error)")
                 }
                 if (successKeychain == false) {
-                    let decryptView = DecryptView(password: password)
+                    let decryptView = DecryptPassphraseView(password: password)
                     let controller = ViewWindowController(rootView: decryptView, title: password.display)
                     controller.openWindow()
                 }
