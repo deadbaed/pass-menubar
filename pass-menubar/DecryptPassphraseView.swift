@@ -24,6 +24,8 @@ func getUserId(path: String) -> String {
 
 struct DecryptPassphraseView: View {
     let password: Password
+    @Binding var decryptedPassword: String?
+
     @AppStorage("rawPathKey") private var rawPathKey = ""
     @AppStorage("rememberPassphrase") private var rememberPassphrase = false
     @State private var passphrase = ""
@@ -61,6 +63,7 @@ struct DecryptPassphraseView: View {
                 Button("Decrypt", action: {
                     do {
                         let result = try decrypt(path: password.path, key: rawPathKey, passphrase: passphrase, line: 0, remember: rememberPassphrase)
+                        decryptedPassword = result
                         print("decryption result: \(result)")
                     } catch {
                         switch error {
@@ -86,6 +89,7 @@ struct DecryptPassphraseView: View {
 
 struct DecryptPassphraseView_Previews: PreviewProvider {
     static var previews: some View {
-        DecryptPassphraseView(password: Password(path: "/Users/phil/.password-store/file.gpg", relativePath: "file"))
+        let password = Password(path: "/Users/phil/.password-store/file.gpg", relativePath: "file")
+        DecryptPassphraseView(password: password, decryptedPassword: .constant(nil))
     }
 }

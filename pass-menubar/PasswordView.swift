@@ -36,7 +36,7 @@ struct PasswordView: View {
                             print("decryption result: \(result)")
 
                             // Display success view, and copy to clipboard
-                            let decryptSuccessView = DecryptSuccessView(password: password, decryptedPassword: result)
+                            let decryptSuccessView = DecryptView(password: password, decrypted: result)
                             let controller = ViewWindowController(rootView: decryptSuccessView, title: password.display)
                             controller.openWindow()
                             successKeychain = true
@@ -46,7 +46,7 @@ struct PasswordView: View {
                     print("error while decrypting with passphrase from macos keychain: \(error)")
                 }
                 if (successKeychain == false) {
-                    let decryptView = DecryptPassphraseView(password: password)
+                    let decryptView = DecryptView(password: password, decrypted: nil)
                     let controller = ViewWindowController(rootView: decryptView, title: password.display)
                     controller.openWindow()
                 }
