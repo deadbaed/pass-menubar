@@ -8,13 +8,27 @@
 import SwiftUI
 import Files
 
+extension String {
+    func fuzzyMatch(_ needle: String) -> Bool {
+        if needle.isEmpty { return true }
+        var remainder = needle[...]
+        for char in self {
+            if char == remainder[remainder.startIndex] {
+                remainder.removeFirst()
+                if remainder.isEmpty { return true }
+            }
+        }
+        return false
+    }
+}
+
 struct ContentView: View {
-    @State var search = ""
+    @State var needle = ""
     let passwordList: [Password]
     @AppStorage("isKeyValid") private var isKeyValid = false
 
     var filtered: [Password] {
-        passwordList.filter { $0.display.contains(search) }
+        passwordList.filter { $0.display.fuzzyMatch(needle) }
     }
 
     var body: some View {
@@ -23,11 +37,11 @@ struct ContentView: View {
                 // search
                 HStack {
                     Image(systemName: "magnifyingglass")
-                    TextField("Search", text: $search)
+                    TextField("Search", text: $needle)
 
-                    if !search.isEmpty {
+                    if !needle.isEmpty {
                         Button(action: {
-                            self.search = ""
+                            self.needle = ""
                         }) {
                             Image(systemName: "delete.left")
                         }
