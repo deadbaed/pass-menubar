@@ -13,6 +13,10 @@ struct ContentView: View {
     let passwordList: [Password]
     @AppStorage("isKeyValid") private var isKeyValid = false
 
+    var filtered: [Password] {
+        passwordList.filter { $0.display.contains(search) }
+    }
+
     var body: some View {
         VStack {
             HStack {
@@ -51,7 +55,7 @@ struct ContentView: View {
             } else if !isKeyValid {
                 Text("No pgp key present").frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
             } else {
-                List(passwordList) { password in
+                List(filtered) { password in
                     PasswordView(password: password)
                 }
             }
