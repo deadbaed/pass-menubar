@@ -20,10 +20,6 @@ struct PasswordView: View {
         display
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
             .contentShape(Rectangle())
-            .background(isHover ? Color.red : Color.clear)
-            .onHover {
-                self.isHover = $0
-            }
             .onTapGesture {
                 do {
                     // Attempt to get passphrase from macos keychain
