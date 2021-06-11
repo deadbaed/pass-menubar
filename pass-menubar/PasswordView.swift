@@ -11,12 +11,13 @@ import Files
 struct PasswordView: View {
     @State private var isHover = false
     let password: Password
+    let display: Text
     @AppStorage("rawPathKey") private var rawPathKey = ""
     @AppStorage("rememberPassphrase") private var rememberPassphrase = false
     @State private var successKeychain = false
 
     var body: some View {
-        Text(password.display)
+        display
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
             .contentShape(Rectangle())
             .background(isHover ? Color.red : Color.clear)
@@ -56,6 +57,6 @@ struct PasswordView: View {
 
 struct PasswordView_Previews: PreviewProvider {
     static var previews: some View {
-        PasswordView(password: Password(path: "/Users/phil/.password-store/file.gpg", relativePath: "file"))
+        PasswordView(password: Password(path: "/Users/phil/.password-store/file.gpg", relativePath: "file"), display: Text("file"))
     }
 }

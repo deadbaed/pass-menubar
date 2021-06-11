@@ -9,16 +9,19 @@ import SwiftUI
 import Files
 
 extension String {
-    func fuzzyMatch(_ needle: String) -> Bool {
-        if needle.isEmpty { return true }
-        var remainder = needle[...]
-        for char in self {
+    func fuzzyMatch(_ needle: String) -> [String.Index]? {
+        var ixs: [Index] = []
+        if needle.isEmpty { return [] }
+        var remainder = needle[...].utf8
+        for idx in utf8.indices {
+            let char = utf8[idx]
             if char == remainder[remainder.startIndex] {
+                ixs.append(idx)
                 remainder.removeFirst()
-                if remainder.isEmpty { return true }
+                if remainder.isEmpty { return ixs }
             }
         }
-        return false
+        return nil
     }
 }
 
@@ -27,8 +30,11 @@ struct ContentView: View {
     let passwordList: [Password]
     @AppStorage("isKeyValid") private var isKeyValid = false
 
-    var filtered: [Password] {
-        passwordList.filter { $0.display.fuzzyMatch(needle) }
+    var filtered: [(password: Password, indices: [String.Index])] {
+        return passwordList.compactMap {
+            guard let match = $0.display.fuzzyMatch(needle) else { return nil }
+            return ($0, match)
+        }
     }
 
     var body: some View {
@@ -69,12 +75,26 @@ struct ContentView: View {
             } else if !isKeyValid {
                 Text("No pgp key present").frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
             } else {
-                List(filtered) { password in
-                    PasswordView(password: password)
+                List(filtered, id: \.password) { password in
+                    highlight(password: password.password, indices: password.indices)
                 }
             }
         }
     }
+}
+
+func highlight(password: Password, indices: [String.Index]) -> PasswordView {
+    var result = Text("")
+
+    for i in password.display.indices {
+        let char = Text(String(password.display[i]))
+        if (indices.contains(i)) {
+            result = result + char.bold()
+        } else {
+            result = result + char.foregroundColor(.secondary)
+        }
+    }
+    return PasswordView(password: password, display: result)
 }
 
 struct ContentView_Previews: PreviewProvider {

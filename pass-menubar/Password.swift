@@ -33,7 +33,7 @@ func passwordList(path: String) -> [Password] {
     return array
 }
 
-struct Password: Identifiable {
+struct Password: Identifiable, Hashable {
     let id = UUID()
     var path: String
     var display: String
