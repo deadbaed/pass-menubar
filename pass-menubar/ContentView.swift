@@ -88,7 +88,7 @@ func highlight(password: Password, indices: [String.Index]) -> PasswordView {
 
     for i in password.display.indices {
         let char = Text(String(password.display[i]))
-        if (indices.contains(i)) {
+        if indices.contains(i) {
             result = result + char.bold()
         } else {
             result = result + char.foregroundColor(.secondary)

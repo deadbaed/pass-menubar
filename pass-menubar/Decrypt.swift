@@ -43,13 +43,13 @@ func decrypt(path: String, key: String, passphrase: String, line: Int, remember:
     }
 
     // decrypt file
-    guard let decrypted_data = try? ObjectivePGP.decrypt(encrypted_data, andVerifySignature: false, using: keys, passphraseForKey: { (key) -> String? in
+    guard let decrypted_data = try? ObjectivePGP.decrypt(encrypted_data, andVerifySignature: false, using: keys, passphraseForKey: { (_) -> String? in
         return passphrase
     }) else {
         throw DecryptError.decryption
     }
 
-    if (remember == true) {
+    if remember == true {
         let keyID = extractKeyIdFromPrivateKey(keys: keys)
         try savePassphrase(keyId: keyID, passphrase: passphrase)
     }

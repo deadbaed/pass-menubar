@@ -21,7 +21,7 @@ struct DecryptSuccessView: View {
     var clipboardSuccess = false
     @State private var timeLeft = 45
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    
+
     // Copy to clipboard
     init(password: Password, decryptedPassword: String) {
         self.password = password
@@ -32,7 +32,7 @@ struct DecryptSuccessView: View {
             print("failed to copy to clipboard")
         }
     }
-    
+
     var body: some View {
         Text("Password has been copied to clipboard.").fontWeight(.bold)
         Text("Will clear in \(timeLeft) seconds.").fontWeight(.bold)

@@ -10,7 +10,7 @@ import KeychainAccess
 
 func savePassphrase(keyId: String, passphrase: String) throws {
     let keychain = Keychain(service: "pass-menubar")
-    
+
     DispatchQueue.global().sync {
         do {
             try keychain.accessibility(.whenUnlocked, authenticationPolicy: .userPresence)
@@ -23,11 +23,11 @@ func savePassphrase(keyId: String, passphrase: String) throws {
 
 func getPassphrase(keyId: String, completion: @escaping ((String) -> Void)) throws {
     let keychain = Keychain(service: "pass-menubar")
-    
+
     DispatchQueue.global().sync {
         do {
             let optionalPassphrase = try keychain.get(keyId)
-            
+
             if let passphrase = optionalPassphrase {
                 print("got passphrase: \(passphrase)")
                 completion(passphrase)

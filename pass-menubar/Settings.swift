@@ -117,7 +117,7 @@ struct SettingsView: View {
     private enum Tabs: Hashable {
         case general, security
     }
-    
+
     var body: some View {
         TabView {
             GeneralSettingsView()

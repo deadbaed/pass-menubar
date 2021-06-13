@@ -34,7 +34,7 @@ struct DecryptPassphraseView: View {
     @State private var decryptErrorMessage = ""
 
     var body: some View {
-        VStack() {
+        VStack {
             Text("Passphrase").font(.title)
             Text("Enter your passphrase to unlock the secret key.")
             Spacer()
