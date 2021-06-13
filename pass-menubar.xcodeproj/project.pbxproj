@@ -171,6 +171,7 @@
 			buildConfigurationList = 4AACCFE5260CBE0A00A5F353 /* Build configuration list for PBXNativeTarget "pass-menubar" */;
 			buildPhases = (
 				4AACCFD1260CBE0900A5F353 /* Sources */,
+				4A4C6F102676B0DC00F64887 /* Run Script */,
 				4AACCFD2260CBE0900A5F353 /* Frameworks */,
 				4AACCFD3260CBE0900A5F353 /* Resources */,
 			);
@@ -249,6 +250,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4A4C6F102676B0DC00F64887 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\n# if installed with homebrew on m1, fix path\nif test -d \"/opt/homebrew/bin/\"; then\n  PATH=\"/opt/homebrew/bin/:${PATH}\"\nfi\n\nexport PATH\n\n# try to detect swiftlint\nif which swiftlint >/dev/null; then\n  swiftlint autocorrect && swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4A3820BC261E4D46005D3258 /* Sources */ = {
