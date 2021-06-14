@@ -23,15 +23,11 @@ struct PasswordView: View {
             .onTapGesture {
                 do {
                     // Attempt to get passphrase from macos keychain
-                    let keyId = extractKeyIdFromFile(path: rawPathKey)
-                    try getPassphrase(keyId: keyId) { (passphrase) in
-                        print("got passphrase from keychain: \(passphrase)")
-
+                    let keyId = extractPrivateKeyIdFromFile(path: rawPathKey)
+                    try getPassphraseKeychain(keyId: keyId) { (passphrase) in
                         // Attempt to decrypt with passphrase from keychain
                         let result = try? decrypt(path: password.path, key: rawPathKey, passphrase: passphrase, remember: rememberPassphrase)
                         if let result = result {
-                            print("decryption result: \(result)")
-
                             // Display success view, and copy to clipboard
                             let decryptSuccessView = DecryptView(password: password, decrypted: result)
                             let controller = ViewWindowController(rootView: decryptSuccessView, title: password.display)
@@ -53,6 +49,7 @@ struct PasswordView: View {
 
 struct PasswordView_Previews: PreviewProvider {
     static var previews: some View {
-        PasswordView(password: Password(path: "/Users/phil/.password-store/file.gpg", relativePath: "file"), display: Text("file"))
+        let password = Password(path: "/Users/phil/.password-store/file.gpg", relativePath: "file")
+        PasswordView(password: password, display: Text("file"))
     }
 }

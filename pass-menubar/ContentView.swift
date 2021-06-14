@@ -57,8 +57,8 @@ struct ContentView: View {
                 // settings
                 Button(action: { NSApp.sendAction(Selector(("showPreferencesWindow:")), to: nil, from: nil) },
                        label: {
-                        Image(systemName: "gearshape.fill")
-                       })
+                    Image(systemName: "gearshape.fill")
+                })
 
                 // quit
                 Button(action: {

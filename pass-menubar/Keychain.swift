@@ -8,7 +8,7 @@
 import Foundation
 import KeychainAccess
 
-func savePassphrase(keyId: String, passphrase: String) throws {
+func savePassphraseKeychain(keyId: String, passphrase: String) throws {
     let keychain = Keychain(service: "pass-menubar")
 
     DispatchQueue.global().sync {
@@ -21,7 +21,7 @@ func savePassphrase(keyId: String, passphrase: String) throws {
     }
 }
 
-func getPassphrase(keyId: String, completion: @escaping ((String) -> Void)) throws {
+func getPassphraseKeychain(keyId: String, completion: @escaping ((String) -> Void)) throws {
     let keychain = Keychain(service: "pass-menubar")
 
     DispatchQueue.global().sync {
@@ -38,7 +38,7 @@ func getPassphrase(keyId: String, completion: @escaping ((String) -> Void)) thro
     }
 }
 
-func removeAllKeys() throws {
+func removeAllKeysKeychain() throws {
     let keychain = Keychain(service: "pass-menubar")
     let keys = keychain.allKeys()
 

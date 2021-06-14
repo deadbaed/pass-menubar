@@ -64,7 +64,6 @@ struct DecryptPassphraseView: View {
                     do {
                         let result = try decrypt(path: password.path, key: rawPathKey, passphrase: passphrase, remember: rememberPassphrase)
                         decryptedPassword = result
-                        print("decryption result: \(result)")
                     } catch {
                         switch error {
                         case DecryptError.decryption:

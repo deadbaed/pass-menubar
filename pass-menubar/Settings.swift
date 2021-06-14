@@ -55,7 +55,7 @@ private func loadPrivateKey(path: String, text: inout String, isValid: inout Boo
     var keyID = ""
     do {
         let keys = try ObjectivePGP.readKeys(fromPath: file.path)
-        keyID = extractKeyIdFromPrivateKey(keys: keys)
+        keyID = extractPrivateKeyIdFromKeys(keys: keys)
     } catch {
         text = "⛔️ Failed to load PGP key"
         isValid = false
@@ -105,7 +105,7 @@ struct SecuritySettingsView: View {
         VStack(alignment: .leading) {
             Toggle("Remember passphrase", isOn: $rememberPassphrase)
             Button("Remove all remembered keys") {
-                try? removeAllKeys()
+                try? removeAllKeysKeychain()
             }
         }
         .padding(5)

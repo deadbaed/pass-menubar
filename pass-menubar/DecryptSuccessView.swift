@@ -9,7 +9,6 @@ import SwiftUI
 
 func clearClipboardCloseWindow() {
     if clearClipboard() == true {
-        print("clipboard has been cleared")
         NSApplication.shared.keyWindow?.close()
     } else {
         print("failed to clear clipboard")
@@ -26,7 +25,6 @@ struct DecryptSuccessView: View {
     init(password: Password, decryptedPassword: String) {
         self.password = password
         if copyClipboard(str: decryptedPassword) == true {
-            print("copied to clipboard")
             clipboardSuccess = true
         } else {
             print("failed to copy to clipboard")
@@ -45,7 +43,6 @@ struct DecryptSuccessView: View {
                 }
             }
         Button("Clear now", action: {
-            print("clear password now")
             clearClipboardCloseWindow()
         }).keyboardShortcut(.defaultAction)
     }
@@ -53,6 +50,7 @@ struct DecryptSuccessView: View {
 
 struct DecryptSuccessView_Previews: PreviewProvider {
     static var previews: some View {
-        DecryptSuccessView(password: Password(path: "/Users/phil/.password-store/file.gpg", relativePath: "file"), decryptedPassword: "password")
+        let password = Password(path: "/Users/phil/.password-store/file.gpg", relativePath: "file")
+        DecryptSuccessView(password: password, decryptedPassword: "password")
     }
 }
