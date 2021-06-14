@@ -62,7 +62,7 @@ struct DecryptPassphraseView: View {
                 }).keyboardShortcut(.cancelAction)
                 Button("Decrypt", action: {
                     do {
-                        let result = try decrypt(path: password.path, key: rawPathKey, passphrase: passphrase, line: 0, remember: rememberPassphrase)
+                        let result = try decrypt(path: password.path, key: rawPathKey, passphrase: passphrase, remember: rememberPassphrase)
                         decryptedPassword = result
                         print("decryption result: \(result)")
                     } catch {

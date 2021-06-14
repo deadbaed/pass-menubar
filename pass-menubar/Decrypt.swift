@@ -31,7 +31,7 @@ func extractKeyIdFromPrivateKey(keys: [Key]) -> String {
     return ""
 }
 
-func decrypt(path: String, key: String, passphrase: String, line: Int, remember: Bool) throws -> String {
+func decrypt(path: String, key: String, passphrase: String, remember: Bool) throws -> String {
     // load file from path as NSData
     guard let encryptedData = FileManager.default.contents(atPath: path) else {
         throw DecryptError.file
@@ -60,6 +60,7 @@ func decrypt(path: String, key: String, passphrase: String, line: Int, remember:
     }
 
     // get specific line of multi line password
+    let line = 0
     let password = decryptedString.components(separatedBy: "\n")
     if password.indices.contains(line) == false {
         throw DecryptError.line

@@ -28,7 +28,7 @@ struct PasswordView: View {
                         print("got passphrase from keychain: \(passphrase)")
 
                         // Attempt to decrypt with passphrase from keychain
-                        let result = try? decrypt(path: password.path, key: rawPathKey, passphrase: passphrase, line: 0, remember: rememberPassphrase)
+                        let result = try? decrypt(path: password.path, key: rawPathKey, passphrase: passphrase, remember: rememberPassphrase)
                         if let result = result {
                             print("decryption result: \(result)")
 
