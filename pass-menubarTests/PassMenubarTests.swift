@@ -9,7 +9,7 @@ import XCTest
 import Files
 @testable import pass_menubar
 
-class pass_menubarTests: XCTestCase {
+class PassMenubarTests: XCTestCase {
 
     func testPasswordList() throws {
         // Get test password store

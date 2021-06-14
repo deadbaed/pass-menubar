@@ -45,15 +45,13 @@ struct ContentView: View {
                     Image(systemName: "magnifyingglass")
                     TextField("Search", text: $needle)
 
-                    if !needle.isEmpty {
-                        Button(action: {
-                            self.needle = ""
-                        }) {
-                            Image(systemName: "delete.left")
-                        }
-                    } else {
-                        EmptyView()
-                    }
+                    Button(action: {
+                        self.needle = ""
+                    }, label: {
+                        Image(systemName: "delete.left")
+                    })
+                        .disabled(needle.isEmpty)
+                        .buttonStyle(BorderlessButtonStyle())
                 }
 
                 // settings
@@ -86,11 +84,13 @@ struct ContentView: View {
 func highlight(password: Password, indices: [String.Index]) -> PasswordView {
     var result = Text("")
 
-    for i in password.display.indices {
-        let char = Text(String(password.display[i]))
-        if indices.contains(i) {
+    for index in password.display.indices {
+        let char = Text(String(password.display[index]))
+        if indices.contains(index) {
+            // swiftlint:disable shorthand_operator
             result = result + char.bold()
         } else {
+            // swiftlint:disable shorthand_operator
             result = result + char.foregroundColor(.secondary)
         }
     }

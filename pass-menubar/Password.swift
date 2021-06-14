@@ -16,8 +16,8 @@ func passwordList(path: String) -> [Password] {
     }
 
     do {
-        let root_passwordstore = try Folder(path: path)
-        for file in root_passwordstore.files.recursive {
+        let rootPasswordStore = try Folder(path: path)
+        for file in rootPasswordStore.files.recursive {
 
             // We are interested in files that have file extension ".gpg"
             if file.path.suffix(4) != ".gpg" {
@@ -25,7 +25,7 @@ func passwordList(path: String) -> [Password] {
             }
 
             let path = file.path
-            let relativePath = file.path(relativeTo: root_passwordstore)
+            let relativePath = file.path(relativeTo: rootPasswordStore)
             let password = Password(path: path, relativePath: relativePath)
             array.append(password)
         }
@@ -34,6 +34,7 @@ func passwordList(path: String) -> [Password] {
 }
 
 struct Password: Identifiable, Hashable {
+    // swiftlint:disable identifier_name
     let id = UUID()
     var path: String
     var display: String

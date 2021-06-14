@@ -24,8 +24,8 @@ func extractKeyIdFromFile(path: String) -> String {
 
 func extractKeyIdFromPrivateKey(keys: [Key]) -> String {
     for key in keys {
-        if let priv_key = key.secretKey {
-            return "\(priv_key.keyID)"
+        if let privateKey = key.secretKey {
+            return "\(privateKey.keyID)"
         }
     }
     return ""
@@ -33,7 +33,7 @@ func extractKeyIdFromPrivateKey(keys: [Key]) -> String {
 
 func decrypt(path: String, key: String, passphrase: String, line: Int, remember: Bool) throws -> String {
     // load file from path as NSData
-    guard let encrypted_data = FileManager.default.contents(atPath: path) else {
+    guard let encryptedData = FileManager.default.contents(atPath: path) else {
         throw DecryptError.file
     }
 
@@ -43,7 +43,7 @@ func decrypt(path: String, key: String, passphrase: String, line: Int, remember:
     }
 
     // decrypt file
-    guard let decrypted_data = try? ObjectivePGP.decrypt(encrypted_data, andVerifySignature: false, using: keys, passphraseForKey: { (_) -> String? in
+    guard let decryptedData = try? ObjectivePGP.decrypt(encryptedData, andVerifySignature: false, using: keys, passphraseForKey: { (_) -> String? in
         return passphrase
     }) else {
         throw DecryptError.decryption
@@ -55,12 +55,12 @@ func decrypt(path: String, key: String, passphrase: String, line: Int, remember:
     }
 
     // convert raw bytes to a string
-    guard let decrypted_str = String(data: decrypted_data, encoding: .utf8) else {
+    guard let decryptedString = String(data: decryptedData, encoding: .utf8) else {
         throw DecryptError.stringConversion
     }
 
     // get specific line of multi line password
-    let password = decrypted_str.components(separatedBy: "\n")
+    let password = decryptedString.components(separatedBy: "\n")
     if password.indices.contains(line) == false {
         throw DecryptError.line
     }

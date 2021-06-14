@@ -14,8 +14,8 @@ func getUserId(path: String) -> String {
     do {
         let keys = try ObjectivePGP.readKeys(fromPath: path)
         for key in keys {
-            if let priv_key = key.secretKey {
-                user = priv_key.primaryUser!.userID
+            if let privateKey = key.secretKey {
+                user = privateKey.primaryUser!.userID
             }
         }
     } catch {}

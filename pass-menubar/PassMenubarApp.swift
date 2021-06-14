@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class pass_menubarAppDelegate: NSObject, NSApplicationDelegate {
+class PassMenubarAppDelegate: NSObject, NSApplicationDelegate {
     var statusBarItem: NSStatusItem?
     var application: NSApplication = NSApplication.shared
 
@@ -38,9 +38,10 @@ class pass_menubarAppDelegate: NSObject, NSApplicationDelegate {
 }
 
 @main
-struct pass_menubarApp: App {
+struct PassMenubarApp: App {
 
-    @NSApplicationDelegateAdaptor(pass_menubarAppDelegate.self) weak var appDelegate
+    // swiftlint:disable weak_delegate
+    @NSApplicationDelegateAdaptor(PassMenubarAppDelegate.self) var appDelegate
 
     var body: some Scene {
 //        WindowGroup {
