@@ -32,7 +32,11 @@ struct DecryptSuccessView: View {
     }
 
     var body: some View {
-        Text("Password has been copied to clipboard.").fontWeight(.bold)
+        HStack {
+            Text("Password ")
+            TextField("", text: .constant(password.display)).fixedSize()
+            Text(" has been copied to clipboard.").fontWeight(.bold)
+        }
         Text("Will clear in \(timeLeft) seconds.").fontWeight(.bold)
             .onReceive(timer) { _ in
                 if timeLeft > 0 {
