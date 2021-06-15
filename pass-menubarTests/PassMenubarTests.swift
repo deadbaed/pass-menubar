@@ -28,6 +28,17 @@ func countFilesInDirectory(path: String) -> Int {
 
 class PassMenubarTests: XCTestCase {
 
+    func testPassword() throws {
+        let testBundle = Bundle(for: type(of: self))
+        let passwordStoreRoot = testBundle.resourcePath! + "/assets/password-store/"
+
+        let filename = "destroy.gpg"
+        let passwordPath = passwordStoreRoot + filename
+
+        let password = Password(path: passwordPath, relativePath: filename)
+        XCTAssertEqual(password.display, "destroy")
+    }
+
     func testPasswordList() throws {
         // Get test password store
         let testBundle = Bundle(for: type(of: self))
@@ -60,8 +71,35 @@ class PassMenubarTests: XCTestCase {
         do {
         _ = try decrypt(path: passwordPath, key: secretKey, passphrase: passphrase, remember: false)
         } catch let error as DecryptError {
-            print(error)
             XCTAssertEqual(error, DecryptError.decryption)
         }
+    }
+
+    func testDecryptInvalidKey() throws {
+        let passphrase = "password"
+
+        let testBundle = Bundle(for: type(of: self))
+        let assetsRoot = testBundle.resourcePath! + "/assets"
+        let secretKey = assetsRoot + "/does_not_exist"
+        let passwordPath = assetsRoot + "/password-store/destroy.gpg"
+
+        do {
+            _ = try decrypt(path: passwordPath, key: secretKey, passphrase: passphrase, remember: false)
+        } catch let error as DecryptError {
+            XCTAssertEqual(error, DecryptError.key)
+        }
+    }
+
+    func testDecryptMultilinePassword() throws {
+        let passphrase = "password"
+
+        let testBundle = Bundle(for: type(of: self))
+        let assetsRoot = testBundle.resourcePath! + "/assets"
+        let secretKey = assetsRoot + "/secret-key.asc"
+        let passwordPath = assetsRoot + "/password-store/multiline.gpg"
+
+        // First line of the file is "this"
+        let firstLine = try decrypt(path: passwordPath, key: secretKey, passphrase: passphrase, remember: false)
+        XCTAssertEqual(firstLine, "this")
     }
 }
