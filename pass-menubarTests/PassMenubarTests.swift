@@ -36,4 +36,32 @@ class PassMenubarTests: XCTestCase {
         let passwords = passwordList(path: passwordStore)
         XCTAssertEqual(passwords.count, countFilesInDirectory(path: passwordStore))
     }
+
+    func testdecryptValidPassphrase() throws {
+        let passphrase = "password"
+
+        let testBundle = Bundle(for: type(of: self))
+        let assetsRoot = testBundle.resourcePath! + "/assets"
+        let secretKey = assetsRoot + "/secret-key.asc"
+        let passwordPath = assetsRoot + "/password-store/destroy.gpg"
+
+        let output = try decrypt(path: passwordPath, key: secretKey, passphrase: passphrase, remember: false)
+        XCTAssertEqual(output, "destroy")
+    }
+
+    func testDecryptInvalidPassphrase() throws {
+        let passphrase = "invalid_password"
+
+        let testBundle = Bundle(for: type(of: self))
+        let assetsRoot = testBundle.resourcePath! + "/assets"
+        let secretKey = assetsRoot + "/secret-key.asc"
+        let passwordPath = assetsRoot + "/password-store/destroy.gpg"
+
+        do {
+        _ = try decrypt(path: passwordPath, key: secretKey, passphrase: passphrase, remember: false)
+        } catch let error as DecryptError {
+            print(error)
+            XCTAssertEqual(error, DecryptError.decryption)
+        }
+    }
 }
