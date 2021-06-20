@@ -50,6 +50,7 @@
 		4A800B4E262C5B8600208336 /* Decrypt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decrypt.swift; sourceTree = "<group>"; };
 		4A8C67FD265E1E38004857D7 /* Clipboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clipboard.swift; sourceTree = "<group>"; };
 		4A8C67FF265F6E31004857D7 /* DecryptSuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecryptSuccessView.swift; sourceTree = "<group>"; };
+		4AA4124A2678861400865A53 /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
 		4AACCFD5260CBE0900A5F353 /* pass-menubar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pass-menubar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AACCFD8260CBE0900A5F353 /* PassMenubarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassMenubarApp.swift; sourceTree = "<group>"; };
 		4AACCFDA260CBE0900A5F353 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -98,6 +99,7 @@
 		4AACCFCC260CBE0900A5F353 = {
 			isa = PBXGroup;
 			children = (
+				4AA4124A2678861400865A53 /* readme.md */,
 				4AACCFD7260CBE0900A5F353 /* pass-menubar */,
 				4A3820C1261E4D46005D3258 /* pass-menubarTests */,
 				4AACCFD6260CBE0900A5F353 /* Products */,
